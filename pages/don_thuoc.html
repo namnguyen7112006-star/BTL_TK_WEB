@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn thuốc</title>
+    <link rel="stylesheet" href="../css/thuoc.css">
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+    <header>
+    <h1>Đơn thuốc</h1>
+    <nav aria-label="breadcrumb">
+        <a href="index.html">Trang chủ</a> / <span>Đơn thuốc</span>
+    </nav>
+    </header>
+    <main class ="prescription-container">
+        <section class="toolbar">
+        <div class = "tool-title">
+            <h2>Danh sách đơn thuốc đã tạo</h2>
+            <p>Hiển thị <span id ="current-count">0</span> / <span id="total-count">0</span> </p>
+        </div>
+        <div class="toolbar-action"> 
+            <div class="searchs-input">
+            <div class="input-group">
+                <input type="text" class="search-input" placeholder="Tìm bệnh nhân , chẩn đoán , thuốc">
+            </div>
+            <div class="input-group">
+                <input type="text" class="date-input" placeholder="Từ ngày - đến ngày" onfocus="(this.type='date')" onblur="(this.value === '' ? this.type='text' : this.type='date')">
+            </div>
+            </div>
+            <select class="arrange">
+                <option value="default">sắp xếp</option>
+                <option value="Default">Mới nhất</option>
+                <option value="Default">Cũ nhất</option>
+                <option value="Default">Tên từ A-Z</option>
+                <option value="Default">Tên từ Z-A</option>
+            </select>
+        </div>
+        </section>
+
+        <section class ="table">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Bệnh nhân</th>
+                        <th>Chẩn đoán</th>
+                        <th>Thuốc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty-row">
+                        <td colspan="4">
+                            <div class="empty-state">
+                                <img src="../assets/images/emty-folder.png" alt="không có dữ liệu" class="emty-icon" >
+                                <h3 class="empty-title">Không có đơn thuốc phù hợp.</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="Phântrang">
+            <div class="page-size">
+                <span>Hiện</span>
+                <select class="size">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                </select>
+                <span>một trang</span>
+            </div>
+        </section>
+        <section class="current-line-seeing">
+            <h3>Dòng đang xem <span id="current-see">0</span></h3>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="Email" >LMD-H@gmail.com</div>
+        <div class="footer-link">
+            <a href ="#">Về chúng tôi</a>
+            <a href ="#">Liên Hệ</a>
+        </div>
+    </footer>
+</body>
+</html>

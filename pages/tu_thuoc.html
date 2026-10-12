@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tủ thuốc</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/tu_thuoc.css">
+</head>
+<body>
+    <header>
+        <h1>Tủ thuốc</h1>
+        <nav aria-label="breadcrumb">
+            <a href="index.html">Trang chủ</a> / <span>Tủ thuốc</span>
+        </nav>
+    </header>
+    
+    <main class="cabinet-container">
+        <div class="modal-overlay" id="addMedicineModal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h2>Thêm thuốc mới</h2>
+                    <button class="close-btn" id="btn-close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-grid">
+                        <div class="form-group span-2">
+                            <label>Tên thuốc<span class ="required">*</span></label>
+                            <input type="text" id="inp-ten" class="modal-input" placeholder="Tenovir">
+                        </div>
+                        <div class="form-group">
+                            <label>Số đăng ký</label>
+                            <input type="text" id="inp-so" class="modal-input" placeholder="67676767676.kd">
+                        </div>
+                        <div class="form-group span-2">
+                            <label>Hoạt chất<span class ="required">*</span></label>
+                            <input type="text" id="inp-chat" class="modal-input" placeholder="Tenovir">
+                        </div>
+                        <div class="form-group span-2">
+                            <label>Dạng bào chế<span class ="required">*</span></label>
+                            <input type="text" id="inp-vien" class="modal-input" placeholder="viên">
+                        </div>
+                        <div class="form-group span-2">
+                            <label>Hàm lượng<span class ="required">*</span></label>
+                            <input type="text" id="inp-hlg" class="modal-input" placeholder="300mg">
+                        </div>
+                        <div class="form-group span-2">
+                            <label>Đường dùng<span class ="required">*</span></label>
+                            <input type="text" id="inp-duong" class="modal-input" placeholder="uống">
+                        </div>
+                        <div class="form-group span-2">
+                            <label>Số lượng<span class ="required">*</span></label>
+                            <input type="text" id="inp-slg" class="modal-input" placeholder="300">
+                        </div>
+                        <div class="form-group">
+                            <label>Số lô</label>
+                            <input type="text" id="inp-solo" class="modal-input" placeholder="1818.kd">
+                        </div>
+                        <div class="form-group">
+                            <label>ghi chú</label>
+                            <input type="text" id="inp-ghichu" class="modal-input" placeholder="dễ dị ứng">
+                        </div>
+                        <div class="form-group">
+                            <label>Ngày hết hạn</label>
+                            <input type="date" id="inp-hethan" class="modal-input" placeholder="chọn ngày hết hạn">
+                        </div>
+                        <div class="form-group">
+                            <label>giá nhập</label>
+                            <input type="text" id="inp-gianhap" class="modal-input" placeholder="1500">
+                        </div>
+                        <div class="form-group">
+                            <label>giá bán</label>
+                            <input type="text" id="inp-sell" class="modal-input" placeholder="2000">
+                        </div>
+                        <div class="form-group">
+                            <label>giá bảo hiểm y tế</label>
+                            <input type="text" id="inp-bhyt" class="modal-input" placeholder="2000">
+                        </div>
+                        <div class="form-group">
+                            <label>Ngưỡng cảnh báo</label>
+                            <input type="text" id="inp-canhbao" class="modal-input" placeholder="20">
+                        </div>
+                        <div class="form-group">
+                            <label>Nguõng khẩn cấp</label>
+                            <input type="text" id="inp-khancap" class="modal-input" placeholder="10">
+                        </div>
+                        <div class="form-group">
+                            <label>Số lượng đặt lại</label>
+                            <input type="text" id="inp-return" class="modal-input" placeholder="50">
+                        </div>
+                        <div class="form-group">
+                            <label>Nhà sản xuất</label>
+                            <input type="text" id="inp-nsx" class="modal-buid" placeholder="Công ty dược A">
+                        </div>
+                        <div class="form-group">
+                            <label>Nhà phân phối</label>
+                            <input type="text" id="inp-npp" class="modal-input" placeholder="Nhà phân phối x">
+                        </div>
+                        <div class="tax-calculation-box span-3">
+                            <label>Thuế %</label>
+                            <input type="number" id="inp-ratio" class="modal-input" placeholder="0">
+                            <label>GÓi bán sau thuế</label>      
+                            <input type="text" id="inp-lastthue" class="modal-input" placeholder="0">
+                            <label>Giá BHYT sau thuế</label>
+                            <input type="text" id="inp-lastcost" class="model-input" placeholder="0">
+                        </div>
+                        <div class="setting-box span-3">
+                            <input type="checkbox" id="chk-slg" class="custom-checkbox" >
+                            <div class="setting-content">
+                                <label for="check-tong-slg" class="setting-title" >Chỉ tính tổng số lượng</label>
+                                <p class="setting-desc">Nhập trực tiếp tổng số lượng thuốc thay vì tính theo công thức.</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <section class="toolbar">
+            <div class="tool-title">
+                <h2>Danh sách thuốc, tồn kho và thao tác nhập xuất</h2>
+                <p>Hiển thị <span id="current-count">0</span> / <span id="total-count">0</span> thuốc</p>
+            </div>
+            
+            <div class="toolbar-action"> 
+                <div class="searchs-input">
+                    <div class="input-group">
+                        <input type="text" class="search-input" placeholder="Tìm mã, tên thuốc, hoạt chất">
+                    </div>
+                    <div class="input-group">
+                        <select class="stock-select">
+                            <option value="default">Tồn kho</option>
+                        </select>
+                    </div>
+                </div>
+                <select class="arrange">
+                    <option value="default">Sắp xếp</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="table">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Số đăng ký</th>
+                        <th>Tên thuốc ↕</th>
+                        <th>Hàm lượng</th>
+                        <th>Đường dùng</th>
+                        <th>Số lượng ↕</th>
+                        <th>Ghi chú</th>
+                        <th><!-- Cột trống cuối cùng --></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty-row">
+                        <!-- Đổi colspan thành 8 vì bảng mới có 8 cột -->
+                        <td colspan="8">
+                            <div class="empty-state">
+                                <!-- Vẫn giữ khung chèn ảnh của bạn, thay text bên dưới -->
+                                <img src="../assets/images/emty-folder.png" alt="không có dữ liệu" class="emty-icon">
+                                <h3 class="empty-title">Không có thuốc phù hợp.</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="Phântrang">
+            <div class="page-size">
+                <span>Hiện</span>
+                <select class="size">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                </select>
+                <span>một trang</span>
+            </div>
+        </section>
+
+        <section class="current-line-seeing">
+            <h3>Dòng đang xem: <span id="current-see">0-0</span></h3>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="Email">LMD-H@gmail.com</div>
+        <div class="footer-link">
+            <a href="#">Về chúng tôi</a>
+            <a href="#">Liên Hệ</a>
+        </div>
+    </footer>
+</body>
+</html>

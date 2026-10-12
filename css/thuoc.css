@@ -1,0 +1,110 @@
+
+header h1{
+    font-size: 24px ;
+    font-weight: bold;
+    color : #172033;
+    margin-bottom: 8px;
+}
+header{
+    border: 1px solid #172033;
+    margin-top:15px;
+}
+.toolbar{
+    margin-left: 10px;
+}
+.tool-title h2,.tool-title p{
+    font-size: 13px;
+    margin-top: 10px;
+}
+.toolbar-action {
+    display: flex;
+    gap:16px;
+}
+.searchs-input{
+    display: flex;
+    flex-direction: row; 
+    gap: 16px;
+}
+.current-line-seeing{
+    font-size:13px;
+    margin-left: 10px;
+}
+.Phântrang{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.search-input{
+    width:200px;
+    padding:8px 12px;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+.date-input{
+    width:200px;
+    padding:8px 12px;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+nav a{
+    text-decoration: none;
+    color:black;
+}
+.arrange{
+    width:200px;
+    padding:8px;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+    color : #64748B;
+}
+.table{
+    border: 1px solid #E3E7EE;
+    margin : 0 auto;
+}
+.data-table th{
+    padding :12px 16px;
+    color : #172033;
+    background-color: #F5F7FB;
+    border-bottom: 2px solid #E3E7EE;
+    border-right: 1px solid #E3E7EE;
+}
+.data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #E3E7EE; 
+}
+.empty-state{
+    text-align: center;
+    padding : 40px 0;
+    min-height: 100px;
+}
+.data-table{
+    width : 100%;
+    border-collapse: collapse;
+}
+.prescription-container{
+    border : 1px solid #E3E7EE;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 50px;
+    margin-right: 20px;
+}
+.emty-icon{
+    width: 450px;
+    border: 1px solid #172033;
+}
+.site-footer{
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.footer-link{
+    display: flex;
+    gap: 20px;
+}
+
