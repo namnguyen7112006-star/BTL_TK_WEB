@@ -1,0 +1,336 @@
+/* ========================================================
+   STYLE BỔ SUNG CHO 3 TRANG: BÁO CÁO, CÀI ĐẶT, KỸ THUẬT
+   ======================================================== */
+
+/* Đồng bộ logo LMD+H trên Sidebar */
+.sidebar .logo {
+    background-color: #000000 !important;
+    padding: 14px 16px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .logo img {
+    max-width: 155px;
+    height: auto;
+    display: block;
+}
+
+/* Thanh bộ lọc (Search, Date, Select) */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filter-search {
+    flex: 2;
+    min-width: 240px;
+}
+
+.filter-search input,
+.filter-dates input,
+.filter-sort select {
+    width: 100%;
+    padding: 9px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.filter-search input:focus,
+.filter-dates input:focus,
+.filter-sort select:focus {
+    border-color: #1b75ff;
+}
+
+.filter-dates {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.filter-dates input {
+    width: auto;
+}
+
+/* Bảng dữ liệu chuẩn phong cách VICAS */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 12px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.data-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Trạng thái thanh toán */
+.status-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-tag.paid {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.status-tag.pending {
+    background-color: #fef9c3;
+    color: #a16207;
+}
+
+/* Nút thao tác nhỏ trong bảng */
+.btn-action-view {
+    background-color: rgba(27, 117, 255, 0.1);
+    color: #1b75ff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.btn-action-view:hover {
+    background-color: #1b75ff;
+    color: #fff;
+}
+
+.btn-action-delete {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* Phân trang */
+.pagination-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.pagination-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-page {
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-page:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Popup Modal chung */
+.modal-layer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 9999;
+}
+
+.modal-layer.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-card {
+    background: #ffffff;
+    width: 520px;
+    max-width: 90%;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 12px;
+}
+
+.modal-close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.modal-bottom-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 14px;
+}
+
+.btn-gray {
+    background: #e2e8f0;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Giao diện Trang Cài đặt */
+.settings-layout {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+}
+
+.settings-subnav {
+    width: 240px;
+    flex-shrink: 0;
+}
+
+.subnav-heading {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 20px 0 8px 12px;
+}
+
+.subnav-link {
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #475569;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subnav-link.active {
+    color: #1b75ff;
+    font-weight: 600;
+    background-color: rgba(27, 117, 255, 0.08);
+}
+
+.settings-form-card {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+}
+
+.avatar-upload-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    border: 2px dashed #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    margin-top: 8px;
+}
+
+.avatar-upload-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.form-group-item {
+    margin-bottom: 20px;
+}
+
+.form-group-item label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.form-group-item input, .form-group-item select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-group-item input[readonly] {
+    background-color: #f8fafc;
+    color: #64748b;
+}
+
+.name-flex-grid {
+    display: flex;
+    gap: 10px;
+}
+
+.name-flex-grid select {
+    width: 130px;
+    flex-shrink: 0;
+}

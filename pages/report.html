@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo khám bệnh - LMD+H</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../assets/logo.png" alt="LMD+H">
+            </a>
+        </div>
+
+        <nav class="menu">
+            <a href="../index.html" class="menu-item"><span class="menu-icon">⌂</span><span>Tổng quan</span></a>
+            <a href="patients.html" class="menu-item"><span class="menu-icon">●</span><span>Bệnh nhân</span></a>
+            <a href="doctors.html" class="menu-item"><span class="menu-icon">●</span><span>Bác sĩ</span></a>
+            <a href="appointments.html" class="menu-item"><span class="menu-icon">●</span><span>Lịch khám</span></a>
+            <a href="paraclinical.html" class="menu-item"><span class="menu-icon">✚</span><span>Kỹ thuật Đông y</span></a>
+            <a href="report.html" class="menu-item active"><span class="menu-icon">📊</span><span>Báo cáo & Hóa đơn</span></a>
+            <a href="settings.html" class="menu-item"><span class="menu-icon">⚙</span><span>Cài đặt</span></a>
+        </nav>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+        <header class="header">
+            <div class="header-title">
+                <h2>Báo cáo khám bệnh</h2>
+                <p>Hệ thống quản lý phòng khám Đông y LMD+H</p>
+            </div>
+            <div class="header-right">
+                <button class="notification-button">🔔<span class="notification-dot"></span></button>
+                <div class="user-icon">BS</div>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="page-title">
+                <div>
+                    <h1>Báo cáo khám bệnh & Hóa đơn</h1>
+                    <p>Theo dõi lượt khám, bài thuốc và chi tiết hóa đơn thanh toán</p>
+                </div>
+                <button class="primary-button" onclick="alert('Đang trích xuất dữ liệu ra file Excel...')">Xuất Excel</button>
+            </div>
+
+            <div class="panel">
+                <div class="filter-bar">
+                    <div class="filter-search">
+                        <input type="text" id="reportSearch" placeholder="Tìm tên bệnh nhân, chẩn đoán, bài thuốc...">
+                    </div>
+                    <div class="filter-dates">
+                        <span>Từ:</span>
+                        <input type="date" id="dateFrom">
+                        <span>Đến:</span>
+                        <input type="date" id="dateTo">
+                    </div>
+                    <div class="filter-sort">
+                        <select id="sortBy">
+                            <option value="desc">Mới nhất trước</option>
+                            <option value="asc">Cũ nhất trước</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th>Bệnh nhân</th>
+                                <th>Chẩn đoán (Đông y)</th>
+                                <th>Pháp trị / Thủ thuật</th>
+                                <th>Tiền hóa đơn</th>
+                                <th>Trạng thái</th>
+                                <th style="text-align: center;">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-wrap">
+                    <div id="paginationInfo">Dòng đang xem: 0 - 0</div>
+                    <div class="pagination-btns">
+                        <button id="btnPrevPage" class="btn-page">‹</button>
+                        <span id="currentPageNum" style="font-weight: bold;">1</span>
+                        <button id="btnNextPage" class="btn-page">›</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Chi tiết Hóa đơn -->
+    <div class="modal-layer" id="invoiceModal">
+        <div class="modal-card">
+            <div class="modal-title-bar">
+                <h3>Chi Tiết Hóa Đơn Thu Phí</h3>
+                <span class="modal-close-btn" onclick="closeInvoiceModal()">&times;</span>
+            </div>
+            <div id="modalInvoiceDetail" style="margin: 16px 0; font-size: 14px; line-height: 1.6;"></div>
+            <div class="modal-bottom-actions">
+                <button class="btn-gray" onclick="closeInvoiceModal()">Đóng</button>
+                <button class="primary-button" onclick="window.print()">In Hóa Đơn</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../javascript/report.js"></script>
+</body>
+
+</html>
