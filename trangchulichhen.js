@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Mảng lưu trữ danh sách lịch hẹn
     let danhSachLichHen = [];
 
-    // 1. Hàm vẽ lịch Tháng động và cập nhật trực tiếp sự kiện lên ô ngày
     function veLichThang() {
         const calendarContainer = document.getElementById("calendarContainer");
         if (!calendarContainer) return;
@@ -18,19 +16,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="wd-header">Thứ 7</div>
         `;
 
-        // Các ngày tháng trước (Tháng 9)
         const daysPrev = [27, 28, 29, 30];
         daysPrev.forEach(d => {
             htmlContent += `<div class="day-cell other"><span>${d}</span></div>`;
         });
 
-        // Các ngày trong tháng 10 năm 2026 (Từ 1 đến 31)
         for (let i = 1; i <= 31; i++) {
             let dayFormatted = `2026-10-${i < 10 ? '0' + i : i}`;
-            
-            // Lọc các lịch hẹn khớp với ngày hiện tại của vòng lặp
             let lichCuaNgay = danhSachLichHen.filter(item => item.ngayKham === dayFormatted);
-
             let eventsHTML = "";
             lichCuaNgay.forEach(ev => {
                 eventsHTML += `<div style="background: #007bff; color: #fff; font-size: 10px; padding: 2px; margin-top: 2px; border-radius: 2px; text-align: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${ev.gioKham} - ${ev.hoTen}</div>`;
@@ -48,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
         calendarContainer.innerHTML = htmlContent;
     }
 
-    // Cập nhật danh sách hiển thị dạng văn bản chi tiết bên dưới lịch
     function capNhatDanhSachHienThi() {
         const container = document.getElementById("appointmentListContainer");
         if (!container) return;
@@ -74,10 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
         container.innerHTML = html;
     }
 
-    // Khởi chạy vẽ lịch lần đầu
     veLichThang();
-
-    // 2. Chuyển đổi qua lại các chế độ xem Tháng - Tuần - Ngày
     const viewButtons = document.querySelectorAll(".view-btn");
     const calendarTitle = document.getElementById("calendarTitle");
 
@@ -122,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 3. Xử lý hiển thị/ẩn Modal Thêm lịch hẹn
     const modal = document.getElementById("appointmentModal");
     const openModalBtn = document.getElementById("openModalBtn");
     const closeModal = document.getElementById("closeModal");
@@ -135,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function() {
         cancelModalBtn.addEventListener("click", () => { modal.style.display = "none"; });
     }
 
-    // 4. Dropdown Chọn giới tính
     const gioiTinhBox = document.getElementById("gioiTinhBox");
     const gioiTinhDropdown = document.getElementById("gioiTinhDropdown");
     const selectedGioiTinh = document.getElementById("selectedGioiTinh");
@@ -160,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (gioiTinhDropdown) gioiTinhDropdown.style.display = "none";
     });
 
-    // 5. Kiểm tra Validation bắt buộc nhập và cập nhật lịch
     if (appointmentForm) {
         appointmentForm.addEventListener("submit", function(e) {
             e.preventDefault();
@@ -186,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!gioKhamVal) { errGioKham.style.display = "block"; isValid = false; } else { errGioKham.style.display = "none"; }
 
             if (isValid) {
-                // Lưu vào danh sách lịch hẹn
                 danhSachLichHen.push({
                     hoTen: hoTenVal,
                     gioiTinh: gioiTinhVal,
@@ -201,7 +186,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 appointmentForm.reset();
                 selectedGioiTinh.textContent = "Chọn giới tính";
 
-                // Vẽ lại lịch tháng và cập nhật danh sách hiển thị
                 veLichThang();
                 capNhatDanhSachHienThi();
             }
