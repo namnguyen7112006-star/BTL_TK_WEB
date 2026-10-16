@@ -1,7 +1,5 @@
-// Lấy tên trang hiện tại từ thẻ <body data-page="...">
 const trangHienTai = document.body.getAttribute("data-page") || "hoasinh";
 
-// Dữ liệu mẫu riêng cho từng file HTML để mở trang nào lên cũng có sẵn dữ liệu hợp lý
 const duLieuMau = {
     hoasinh: [
         { ngay: "2026-10-16", benhNhan: "Nguyễn Văn An", chiDinh: "Tổng phân tích tế bào máu", thongTinRieng: "Máu tĩnh mạch", bacSi: "BS. Nguyễn Hữu Nam", ketQua: "Đã có KQ: Bình thường" },
@@ -23,7 +21,6 @@ const duLieuMau = {
 
 let danhSach = duLieuMau[trangHienTai];
 
-// Các phần tử trên trang
 const tbody = document.getElementById("cls-tbody");
 const modal = document.getElementById("modal-add");
 const btnOpenModal = document.getElementById("btn-open-modal");
@@ -31,12 +28,10 @@ const btnCloseModal = document.getElementById("btn-close-modal");
 const btnCancelModal = document.getElementById("btn-cancel-modal");
 const formAdd = document.getElementById("form-add");
 
-// 1. Hàm hiển thị bảng và tính 3 ô thống kê
 function hienThiBang(mangHienThi) {
     document.getElementById("total-count").innerText = danhSach.length;
     document.getElementById("current-count").innerText = mangHienThi.length;
 
-    // Tính số lượng cho 3 ô thống kê phía trên
     let demCho = 0;
     let demXong = 0;
     for (let i = 0; i < danhSach.length; i++) {
@@ -50,7 +45,6 @@ function hienThiBang(mangHienThi) {
     document.getElementById("stat-wait").innerText = demCho;
     document.getElementById("stat-done").innerText = demXong;
 
-    // Nếu không có dữ liệu thì hiện ảnh emty-folder.png giống hệt trang Đơn thuốc
     if (mangHienThi.length === 0) {
         tbody.innerHTML = `
             <tr class="empty-row">
@@ -66,7 +60,6 @@ function hienThiBang(mangHienThi) {
         return;
     }
 
-    // Vẽ từng dòng dữ liệu
     let html = "";
     for (let i = 0; i < mangHienThi.length; i++) {
         let item = mangHienThi[i];
@@ -90,7 +83,6 @@ function hienThiBang(mangHienThi) {
     document.getElementById("current-see").innerText = "1-" + mangHienThi.length;
 }
 
-// 2. Hàm bấm nút "Nhập KQ" trên từng dòng để sửa nhanh kết quả
 function capNhatKetQua(viTri) {
     let ca = danhSach[viTri];
     let kqMoi = prompt("Nhập kết quả mới cho bệnh nhân " + ca.benhNhan + ":", ca.ketQua);
@@ -100,7 +92,6 @@ function capNhatKetQua(viTri) {
     }
 }
 
-// 3. Mở / Đóng khung Thêm Bệnh Nhân
 btnOpenModal.onclick = function () {
     document.getElementById("inp-date").valueAsDate = new Date();
     modal.style.display = "flex";
@@ -108,7 +99,6 @@ btnOpenModal.onclick = function () {
 btnCloseModal.onclick = function () { modal.style.display = "none"; };
 btnCancelModal.onclick = function () { modal.style.display = "none"; };
 
-// 4. Lưu bệnh nhân mới vào bảng
 formAdd.onsubmit = function (event) {
     event.preventDefault();
 
@@ -127,50 +117,4 @@ formAdd.onsubmit = function (event) {
     modal.style.display = "none";
 };
 
-// 5. Tìm kiếm theo tên bệnh nhân, chỉ định, bác sĩ
-document.getElementById("search-input").oninput = function () {
-    let tuKhoa = this.value.toLowerCase();
-    let ketQuaLoc = [];
-
-    for (let i = 0; i < danhSach.length; i++) {
-        let item = danhSach[i];
-        if (
-            item.benhNhan.toLowerCase().includes(tuKhoa) ||
-            item.chiDinh.toLowerCase().includes(tuKhoa) ||
-            item.bacSi.toLowerCase().includes(tuKhoa)
-        ) {
-            ketQuaLoc.push(item);
-        }
-    }
-    hienThiBang(ketQuaLoc);
-};
-
-// 6. Sắp xếp A-Z, Z-A
-document.getElementById("sort-select").onchange = function () {
-    let kieu = this.value;
-    let tam = danhSach.slice();
-
-    if (kieu === "az") {
-        tam.sort(function (a, b) { return a.benhNhan.localeCompare(b.benhNhan); });
-    } else if (kieu === "za") {
-        tam.sort(function (a, b) { return b.benhNhan.localeCompare(a.benhNhan); });
-    }
-    hienThiBang(tam);
-};
-
-// 7. Xuất danh sách ra file .txt
-document.getElementById("btn-export").onclick = function () {
-    let noiDung = "Ngày | Bệnh nhân | Chỉ định | Chi tiết | Bác sĩ | Kết quả\n";
-    for (let i = 0; i < danhSach.length; i++) {
-        let d = danhSach[i];
-        noiDung += `${d.ngay} | ${d.benhNhan} | ${d.chiDinh} | ${d.thongTinRieng} | ${d.bacSi} | ${d.ketQua}\n`;
-    }
-    let blob = new Blob([noiDung], { type: "text/plain;charset=utf-8" });
-    let link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "danh_sach_" + trangHienTai + ".txt";
-    link.click();
-};
-
-// Hiển thị bảng ngay khi mở trang
-hienThiBang(danhSach);
+document.getElementById("search-input").oninput

@@ -13,6 +13,10 @@
     <nav aria-label="breadcrumb">
         <a href="index.html">Trang chủ</a> / <span>Đơn thuốc</span>
     </nav>
+    <div class="header-buttons">
+            <input type="file" id="file-txt" accept=".txt" style="display: none;">
+            <button type="button" class="btn-primary" id="btn-open-modal">+ Thêm thuốc</button>
+        </div>
     </header>
     <main class ="prescription-container">
         <section class="toolbar">
@@ -86,5 +90,73 @@
             <a href ="#">Liên Hệ</a>
         </div>
     </footer>
+   <div id="modal-prescription" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Thêm đơn thuốc mới</h2>
+                <button type="button" class="btn-close-modal" id="btn-close-modal">&times;</button>
+            </div>
+
+            <form id="form-prescription" class="modal-body">
+                <div class="form-row grid-2-1">
+                    <div class="form-group">
+                        <label>Tên bệnh nhân <span class="req">*</span></label>
+                        <input type="text" id="pres-patient" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày kê đơn <span class="req">*</span></label>
+                        <input type="date" id="pres-date" required>
+                    </div>
+                </div>
+
+                <div class="form-row grid-1">
+                    <div class="form-group">
+                        <label>Chẩn đoán <span class="req">*</span></label>
+                        <input type="text" id="pres-diagnosis" placeholder="Viêm họng cấp" required>
+                    </div>
+                </div>
+
+                <div class="form-row grid-2-1">
+                    <div class="form-group">
+                        <label>Tên thuốc <span class="req">*</span></label>
+                        <input type="text" id="med-name" placeholder="Paracetamol 500mg" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hàm lượng / Đơn vị</label>
+                        <input type="text" id="med-unit" placeholder="Viên" value="Viên">
+                    </div>
+                </div>
+
+                <div class="form-row grid-3">
+                    <div class="form-group">
+                        <label>Số lượng <span class="req">*</span></label>
+                        <input type="number" id="med-qty" placeholder="10" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Liều uống <span class="req">*</span></label>
+                        <input type="text" id="med-dosage" placeholder="Sáng 1, Tối 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cách dùng</label>
+                        <input type="text" id="med-usage" placeholder="Uống sau ăn" value="Uống sau ăn">
+                    </div>
+                </div>
+
+                <div class="form-row grid-1">
+                    <div class="form-group">
+                        <label>Ghi chú / Lời dặn</label>
+                        <input type="text" id="pres-note" placeholder="Uống nhiều nước ấm">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="btn-cancel-modal">Hủy</button>
+                    <button type="submit" class="btn-save">Lưu đơn thuốc</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../javascipt/thuoc.js"></script>
 </body>
 </html>
