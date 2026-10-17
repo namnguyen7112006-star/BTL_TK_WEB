@@ -1,0 +1,87 @@
+/* CSS riêng cho trang Lịch làm việc */
+.schedule-layout { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(300px, 1fr); align-items: start; gap: 24px; }
+.schedule-panel { min-width: 0; }
+.schedule-panel-header { min-height: 86px; }
+.share-tools { display: flex; align-items: center; gap: 8px; }
+.share-url { width: 220px; min-width: 100px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--text-muted); background: white; font-size: 12px; }
+.schedule-table-head, .schedule-row { display: grid; grid-template-columns: minmax(115px, 1fr) minmax(105px, .8fr) minmax(180px, 1.8fr) 105px; align-items: center; gap: 12px; }
+.schedule-table-head { padding: 14px 18px; background: #FAFBFD; border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 12px; font-weight: 600; }
+.schedule-table-head span:last-child { text-align: right; }
+.schedule-row { min-height: 72px; padding: 12px 18px; border-bottom: 1px solid var(--border); font-size: 13px; }
+.schedule-row:last-child { border-bottom: 0; }
+.day-name { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.day-icon { display: grid; place-items: center; width: 38px; height: 38px; flex-shrink: 0; border-radius: 10px; color: var(--text-muted); background: #F5F7FB; font-size: 18px; }
+.status-control { display: flex; align-items: center; gap: 8px; }
+.status-label { min-width: 43px; padding: 6px 8px; border-radius: 6px; text-align: center; background: #F1F5F9; color: var(--text-muted); font-size: 12px; }
+.status-label.open { background: #EAF8F0; color: var(--success); }
+.switch { position: relative; width: 36px; height: 20px; padding: 0; border: 0; border-radius: 20px; background: #D9DEE7; transition: background .2s; }
+.switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: white; box-shadow: 0 1px 2px #0002; transition: transform .2s; }
+.switch[aria-checked="true"] { background: var(--primary); }
+.switch[aria-checked="true"]::after { transform: translateX(16px); }
+.time-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.time-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border: 1px solid #DCE7FF; border-radius: 6px; background: #F3F7FF; color: #2456D4; font-size: 12px; white-space: nowrap; }
+.time-chip button { padding: 0; border: 0; background: transparent; color: #2456D4; font-size: 14px; line-height: 1; }
+.no-time { color: var(--text-muted); line-height: 1.4; }
+.row-actions { display: flex; justify-content: flex-end; }
+.add-time-button { padding: 9px 10px; }
+.panel-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 18px; border-top: 1px solid var(--border); }
+.panel-footer span { color: var(--text-muted); font-size: 12px; }
+.holiday-header { align-items: flex-start; }
+.holiday-header .primary-button { padding: 9px 11px; font-size: 12px; }
+.holiday-list { padding: 16px; }
+.empty-holiday { min-height: 230px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; border: 1px dashed var(--border); background: #FCFDFE; text-align: center; }
+.empty-icon { display: grid; place-items: center; width: 56px; height: 56px; margin-bottom: 18px; border-radius: 12px; background: #EAF8F0; color: var(--success); font-size: 25px; }
+.empty-holiday h3 { margin-bottom: 9px; font-size: 15px; }
+.empty-holiday p { max-width: 270px; color: var(--text-muted); font-size: 13px; line-height: 1.55; }
+.holiday-card { padding: 14px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; }
+.holiday-card:last-child { margin-bottom: 0; }
+.holiday-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.holiday-card h3 { font-size: 14px; line-height: 1.4; }
+.holiday-date { margin-top: 6px; color: var(--primary); font-size: 12px; font-weight: 600; }
+.holiday-note { margin-top: 8px; color: var(--text-muted); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.remove-holiday { border: 0; background: transparent; color: var(--danger); font-size: 18px; }
+.modal { width: min(480px, calc(100% - 28px)); max-width: none; max-height: calc(100% - 30px); margin: auto; padding: 0; border: 1px solid var(--border); border-radius: 14px; color: var(--text); background: white; box-shadow: 0 20px 70px #1720332b; }
+.modal::backdrop { background: #17203366; backdrop-filter: blur(2px); }
+.modal form { padding: 0; }
+.modal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 22px 24px; border-bottom: 1px solid var(--border); }
+.modal-header h2 { font-size: 18px; }
+.modal-header p { margin-top: 6px; color: var(--text-muted); font-size: 12px; }
+.modal-close { width: 30px; height: 30px; border: 0; border-radius: 7px; background: #F5F7FB; color: var(--text-muted); font-size: 22px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 22px 24px 10px; }
+.form-grid.one-column { grid-template-columns: 1fr; }
+.form-grid label { display: flex; flex-direction: column; gap: 8px; color: var(--text); font-size: 13px; font-weight: 600; }
+.form-grid input, .form-grid textarea { width: 100%; padding: 11px 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--text); background: white; font: inherit; font-weight: 400; }
+.form-grid input:focus, .form-grid textarea:focus { outline: 2px solid #3165E833; border-color: var(--primary); }
+.form-hint { padding: 0 24px 12px; color: var(--text-muted); font-size: 12px; line-height: 1.5; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px 22px; }
+.qr-content { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 24px; text-align: center; }
+.qr-content img { width: 190px; height: 190px; object-fit: contain; }
+.qr-content p { color: var(--text-muted); font-size: 12px; overflow-wrap: anywhere; }
+.qr-content .form-hint { padding: 0; }
+.toast { position: fixed; right: 24px; bottom: 24px; z-index: 20; max-width: min(380px, calc(100% - 32px)); padding: 13px 17px; border-radius: 9px; color: white; background: #172033; box-shadow: 0 8px 25px #17203322; font-size: 13px; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .2s, transform .2s; }
+.toast.show { opacity: 1; transform: translateY(0); }
+@media (max-width: 1250px) {
+    .schedule-layout { grid-template-columns: 1fr; }
+    .holiday-header { align-items: center; }
+}
+@media (max-width: 950px) {
+    .schedule-panel-header { align-items: flex-start; flex-direction: column; }
+    .share-tools { width: 100%; flex-wrap: wrap; }
+    .share-url { flex: 1; }
+}
+@media (max-width: 720px) {
+    .schedule-table-head { display: none; }
+    .schedule-row { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 14px; }
+    .day-name { grid-column: 1; }
+    .status-control { grid-column: 2; grid-row: 1; }
+    .time-list, .no-time { grid-column: 1 / -1; }
+    .row-actions { grid-column: 1 / -1; justify-content: flex-start; }
+    .add-time-button { width: 100%; }
+    .panel-footer { align-items: flex-start; flex-direction: column; }
+    .panel-footer .primary-button { width: 100%; }
+    .holiday-header { align-items: flex-start; flex-direction: column; }
+    .form-grid { grid-template-columns: 1fr; padding: 18px; }
+    .form-hint { padding: 0 18px 12px; }
+    .modal-actions { padding: 14px 18px 18px; }
+    .modal-header { padding: 18px; }
+}

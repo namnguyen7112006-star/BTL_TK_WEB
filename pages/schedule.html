@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch làm việc | LMD Health</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/schedule.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="logo" href="../index.html" aria-label="LMD Health - Trang chủ">
+            <span class="logo-mark">✚</span>
+            <span class="logo-text">LMD <small>HEALTH</small></span>
+        </a>
+
+        <nav class="menu" aria-label="Menu chính">
+            <a class="menu-item" href="../index.html"><span class="menu-icon">⌂</span><span>Trang chủ</span></a>
+            <a class="menu-item" href="#"><span class="menu-icon">▦</span><span>Lịch hẹn</span></a>
+            <a class="menu-item active" href="schedule.html"><span class="menu-icon">◷</span><span>Lịch làm việc</span></a>
+
+            <p class="menu-heading">CHỨC NĂNG</p>
+            <button class="menu-item menu-parent" type="button" id="patient-menu-toggle" aria-expanded="true">
+                <span class="menu-icon">♧</span><span>Bệnh nhân</span><span class="menu-arrow">−</span>
+            </button>
+            <div class="submenu" id="patient-submenu">
+                <a href="patients.html">Danh sách bệnh nhân</a>
+                <a href="patient-add.html">Thêm bệnh nhân mới</a>
+            </div>
+            <a class="menu-item" href="#"><span class="menu-icon">▱</span><span>Thuốc</span><span class="menu-arrow">+</span></a>
+            <a class="menu-item" href="#"><span class="menu-icon">⚗</span><span>Cận lâm sàng</span><span class="menu-arrow">+</span></a>
+            <a class="menu-item" href="#"><span class="menu-icon">▤</span><span>Báo cáo &amp; Hóa đơn</span><span class="menu-arrow">+</span></a>
+            <a class="menu-item" href="#"><span class="menu-icon">☷</span><span>Tiện ích</span><span class="menu-arrow">+</span></a>
+            <a class="menu-item" href="#"><span class="menu-icon">⚙</span><span>Quản lý</span><span class="menu-arrow">+</span></a>
+
+            <p class="menu-heading">KHÁC</p>
+            <a class="menu-item" href="#"><span class="menu-icon">♡</span><span>Ủng hộ chúng tôi</span></a>
+            <a class="menu-item" href="#"><span class="menu-icon">ⓘ</span><span>Hướng dẫn sử dụng</span></a>
+            <a class="menu-item" href="#"><span class="menu-icon">♧</span><span>Cộng đồng sử dụng</span></a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="user-avatar">LM</div>
+            <span class="sidebar-user">Tài khoản quản trị</span>
+            <button class="icon-button" type="button" title="Cài đặt" aria-label="Cài đặt">⚙</button>
+            <button class="icon-button" type="button" title="Thông báo" aria-label="Thông báo">♧</button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="navbar">
+            <div class="navbar-title">
+                <strong>Lịch làm việc</strong>
+                <span>Hệ thống quản lý y tế / Lịch làm việc</span>
+            </div>
+            <div class="navbar-actions">
+                <button class="icon-button notification-button" type="button" aria-label="Thông báo">♧<i></i></button>
+                <div class="user-avatar">LM</div>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="page-title">
+                <div>
+                    <h1>Lịch làm việc</h1>
+                    <p>Thiết lập thời gian làm việc và ngày nghỉ của cơ sở y tế.</p>
+                </div>
+            </div>
+
+            <div class="schedule-layout">
+                <section class="panel schedule-panel">
+                    <div class="panel-header schedule-panel-header">
+                        <div>
+                            <h2>Lịch làm việc</h2>
+                            <p>Quản lý khung giờ hoạt động trong tuần</p>
+                        </div>
+                        <div class="share-tools">
+                            <input id="share-url" class="share-url" aria-label="Liên kết lịch làm việc" readonly>
+                            <button class="secondary-button" id="copy-link" type="button">▢ Sao chép</button>
+                            <button class="primary-button" id="show-qr" type="button">▦ QR Code</button>
+                        </div>
+                    </div>
+                    <div class="schedule-table-head">
+                        <span>Ngày</span><span>Trạng thái</span><span>Khung giờ</span><span>Thao tác</span>
+                    </div>
+                    <div id="schedule-list" class="schedule-list"></div>
+                    <div class="panel-footer">
+                        <span id="schedule-summary">Đang tải lịch làm việc...</span>
+                        <button class="primary-button" id="save-schedule" type="button">Lưu lịch làm việc</button>
+                    </div>
+                </section>
+
+                <section class="panel holiday-panel">
+                    <div class="panel-header holiday-header">
+                        <div>
+                            <h2>Ngày nghỉ đặc biệt</h2>
+                            <p>Ngày lễ, nghỉ phép hoặc lịch công tác</p>
+                        </div>
+                        <button class="primary-button" id="add-holiday" type="button">＋ Thêm ngày nghỉ</button>
+                    </div>
+                    <div id="holiday-list" class="holiday-list"></div>
+                </section>
+            </div>
+
+            <footer class="page-footer">
+                <span>© <span id="current-year"></span> LMD HEALTH</span>
+                <div><a href="#">Về chúng tôi</a><a href="#">Liên hệ</a></div>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Hộp thoại thêm/sửa khung giờ -->
+    <dialog class="modal" id="time-modal">
+        <form id="time-form" method="dialog">
+            <div class="modal-header">
+                <div><h2 id="time-modal-title">Thêm khung giờ</h2><p id="time-modal-day">Thiết lập giờ làm việc</p></div>
+                <button class="modal-close" type="button" data-close="time-modal" aria-label="Đóng">×</button>
+            </div>
+            <input type="hidden" id="time-day-index">
+            <input type="hidden" id="time-edit-index" value="-1">
+            <div class="form-grid">
+                <label>Giờ bắt đầu<input id="time-start" type="time" required value="08:00"></label>
+                <label>Giờ kết thúc<input id="time-end" type="time" required value="17:00"></label>
+            </div>
+            <p class="form-hint">Có thể thêm nhiều khung giờ trong một ngày. Giờ kết thúc phải sau giờ bắt đầu.</p>
+            <div class="modal-actions">
+                <button class="secondary-button" type="button" data-close="time-modal">Hủy</button>
+                <button class="primary-button" type="submit">Lưu khung giờ</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Hộp thoại ngày nghỉ -->
+    <dialog class="modal" id="holiday-modal">
+        <form id="holiday-form" method="dialog">
+            <div class="modal-header">
+                <div><h2>Thêm ngày nghỉ</h2><p>Nhập thông tin ngày nghỉ đặc biệt</p></div>
+                <button class="modal-close" type="button" data-close="holiday-modal" aria-label="Đóng">×</button>
+            </div>
+            <div class="form-grid one-column">
+                <label>Tên ngày nghỉ<input id="holiday-name" type="text" maxlength="80" placeholder="Ví dụ: Nghỉ lễ Quốc khánh" required></label>
+                <label>Ngày nghỉ<input id="holiday-date" type="date" required></label>
+                <label>Ghi chú<textarea id="holiday-note" rows="3" maxlength="250" placeholder="Thông tin bổ sung (không bắt buộc)"></textarea></label>
+            </div>
+            <div class="modal-actions">
+                <button class="secondary-button" type="button" data-close="holiday-modal">Hủy</button>
+                <button class="primary-button" type="submit">Lưu ngày nghỉ</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Hộp thoại QR -->
+    <dialog class="modal qr-modal" id="qr-modal">
+        <div class="modal-header">
+            <div><h2>Chia sẻ lịch làm việc</h2><p>Quét mã QR để mở liên kết lịch</p></div>
+            <button class="modal-close" type="button" data-close="qr-modal" aria-label="Đóng">×</button>
+        </div>
+        <div class="qr-content">
+            <img id="qr-image" alt="Mã QR liên kết lịch làm việc">
+            <p id="qr-url-text"></p>
+            <button class="secondary-button" id="copy-qr-link" type="button">Sao chép liên kết</button>
+            <p class="form-hint">Tạo mã QR cần kết nối Internet. Liên kết hiện tại là liên kết trang đang mở.</p>
+        </div>
+    </dialog>
+    
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/schedule.js"></script>
+</body>
+</html>
