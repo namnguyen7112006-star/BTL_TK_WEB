@@ -1,4 +1,4 @@
-/* --- CHUYỂN TOÀN BỘ ĐOẠN NÀY SANG GLOBAL.CSS --- */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -7,7 +7,7 @@ body {
     min-height: 100vh;
     background-color: #FFFFFF;
     flex-direction: column;
-    padding-left: 100px; /* Sau này có Sidebar thì bỏ cái này đi */
+    padding-left: 100px; 
 }
 
 header h1 {
@@ -18,7 +18,6 @@ header h1 {
 }
 
 header {
-    border: 1px solid #172033; /* Nếu muốn đẹp thì xóa luôn cái viền đen này đi nhé */
     margin-top: 15px;
 }
 

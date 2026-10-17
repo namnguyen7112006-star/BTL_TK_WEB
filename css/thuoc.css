@@ -6,7 +6,6 @@ header h1{
     margin-bottom: 8px;
 }
 header{
-    border: 1px solid #172033;
     margin-top:15px;
 }
 .toolbar{
@@ -91,7 +90,6 @@ nav a{
 }
 .emty-icon{
     width: 450px;
-    border: 1px solid #172033;
 }
 .site-footer{
     flex-direction: column;
