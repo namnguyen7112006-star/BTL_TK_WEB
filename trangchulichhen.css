@@ -401,3 +401,22 @@ select {
     padding-top: 15px;
     margin-top: 15px;
 }
+
+/* Chân trang*/
+.site-footer {
+    background-color: #FFFFFF;
+    border-top: 1px solid #E3E7EE;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-link {
+    display: flex;
+    gap: 20px;
+}
