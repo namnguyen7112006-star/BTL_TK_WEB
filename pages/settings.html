@@ -4,44 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cài đặt tài khoản - LMD+H</title>
+    <title>Cài đặt tài khoản</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/custom.css">
 </head>
 
 <body>
 
-    <aside class="sidebar">
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../assets/logo.png" alt="LMD+H">
-            </a>
-        </div>
-
-        <nav class="menu">
-            <a href="../index.html" class="menu-item"><span class="menu-icon">⌂</span><span>Tổng quan</span></a>
-            <a href="patients.html" class="menu-item"><span class="menu-icon">●</span><span>Bệnh nhân</span></a>
-            <a href="doctors.html" class="menu-item"><span class="menu-icon">●</span><span>Bác sĩ</span></a>
-            <a href="appointments.html" class="menu-item"><span class="menu-icon">●</span><span>Lịch khám</span></a>
-            <a href="paraclinical.html" class="menu-item"><span class="menu-icon">✚</span><span>Kỹ thuật Đông y</span></a>
-            <a href="report.html" class="menu-item"><span class="menu-icon">📊</span><span>Báo cáo & Hóa đơn</span></a>
-            <a href="settings.html" class="menu-item active"><span class="menu-icon">⚙</span><span>Cài đặt</span></a>
-        </nav>
-    </aside>
-
-    <main class="main">
-        <header class="header">
-            <div class="header-title">
-                <h2>Cài đặt</h2>
-                <p>Trang chủ / Cài đặt tài khoản</p>
-            </div>
-            <div class="header-right">
-                <button class="notification-button">🔔<span class="notification-dot"></span></button>
-                <div class="user-icon">BS</div>
-            </div>
-        </header>
-
+    <main class="main my-page-main">
         <section class="content">
+            <!-- Thanh chuyển qua lại 2 chiều giữa 2 trang nhiệm vụ của bạn -->
+            <div class="task-nav-tabs">
+                <a href="report.html" class="task-tab">📊 Báo cáo & Hóa đơn</a>
+                <a href="settings.html" class="task-tab active">⚙ Cài đặt tài khoản</a>
+            </div>
+
+            <div class="page-title">
+                <div>
+                    <h1>Cài đặt tài khoản</h1>
+                    <p>Quản lý thông tin bác sĩ phụ trách và cấu hình phòng khám</p>
+                </div>
+            </div>
+
             <div class="settings-layout">
                 <aside class="settings-subnav">
                     <div class="subnav-link active">● Thông tin cơ bản</div>
@@ -54,12 +38,12 @@
                 </aside>
 
                 <div class="settings-form-card">
-                    <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0;">Thông tin tài khoản</h3>
+                    <h3 style="margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0;">Thông tin tài khoản</h3>
                     <form id="profileForm" onsubmit="saveProfile(event)">
                         <div class="form-group-item">
-                            <label>Ảnh đại diện</label>
+                            <label>Ảnh đại diện (Bấm vào ảnh để thay đổi)</label>
                             <div class="avatar-upload-box" onclick="document.getElementById('avatarFile').click()">
-                                <img id="previewImg" src="../assets/logo.png" alt="Avatar">
+                                <img id="previewImg" src="https://ui-avatars.com/api/?name=Hoang+Minh&background=3165e8&color=fff&size=128" alt="Avatar">
                             </div>
                             <input type="file" id="avatarFile" accept="image/*" style="display:none;" onchange="handleAvatarChange(event)">
                         </div>
@@ -78,8 +62,8 @@
                         </div>
 
                         <div class="form-group-item">
-                            <label>Mã Giấy phép / CCHN</label>
-                            <input type="text" id="licenseNum" value="CCHN-YHCT-08824" placeholder="Nhập mã chứng chỉ hành nghề YHCT">
+                            <label>Mã Giấy phép / CCHN *</label>
+                            <input type="text" id="licenseNum" value="CCHN-YHCT-08824" placeholder="Nhập mã chứng chỉ hành nghề YHCT" required>
                         </div>
 
                         <div class="form-group-item">
@@ -96,7 +80,12 @@
         </section>
     </main>
 
-    <script src="../javascipt/settings.js"></script>
+    <footer class="site-footer">
+        <div class="Email">2026 © <strong>LMD-H</strong> | Email: LMD-H@gmail.com</div>
+        <div class="footer-link"><a href="#">Về chúng tôi</a><a href="#">Liên Hệ</a></div>
+    </footer>
+
+    <script src="../javascript/settings.js"></script>
 </body>
 
 </html>

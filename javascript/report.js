@@ -37,6 +37,45 @@ const examReports = [
             { title: "Thủy châm Vitamin B12", fee: 120000 }
         ],
         status: "pending"
+    },
+    {
+        id: "HD-004",
+        date: "2026-10-08",
+        patient: "Phạm Minh Tuấn (0977 654 321)",
+        diagnosis: "Vị quản thống (Đau dạ dày thể khí trệ)",
+        treatment: "Châm cứu + 5 thang Sài hồ sơ can thang",
+        services: [
+            { title: "Khám tứ chẩn & bắt mạch", fee: 100000 },
+            { title: "Châm cứu tả pháp", fee: 150000 },
+            { title: "5 thang Sài hồ sơ can thang", fee: 550000 }
+        ],
+        status: "paid"
+    },
+    {
+        id: "HD-005",
+        date: "2026-10-07",
+        patient: "Hoàng Bích Ngọc (0934 567 890)",
+        diagnosis: "Phong hàn thấp tý (Viêm khớp gối)",
+        treatment: "Ôn điện châm + Đắp nến parafin",
+        services: [
+            { title: "Khám & bắt mạch", fee: 100000 },
+            { title: "Ôn điện châm khớp gối", fee: 160000 },
+            { title: "Đắp nến parafin trị liệu", fee: 140000 }
+        ],
+        status: "paid"
+    },
+    {
+        id: "HD-006",
+        date: "2026-10-05",
+        patient: "Đỗ Văn Hùng (0965 432 109)",
+        diagnosis: "Thận dương hư (Đau lưng mỏi gối)",
+        treatment: "Cứu ấm mệnh môn + 10 thang Bát vị hoàn",
+        services: [
+            { title: "Khám tư vấn Đông y", fee: 100000 },
+            { title: "Cứu ngải huyệt Mệnh môn, Thận du", fee: 150000 },
+            { title: "10 thang Bát vị quế phụ", fee: 950000 }
+        ],
+        status: "pending"
     }
 ];
 
@@ -54,11 +93,14 @@ function sumTotal(services) {
 
 function renderReportTable() {
     const tbody = document.getElementById("reportTableBody");
+    if (!tbody) return;
     tbody.innerHTML = "";
 
     if (filteredReports.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 30px; color: #94a3b8;">Không có dữ liệu phù hợp.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding: 30px; color: #94a3b8;">Không có dữ liệu phù hợp.</td></tr>`;
         document.getElementById("paginationInfo").innerText = "Dòng đang xem: 0 - 0";
+        document.getElementById("btnPrevPage").disabled = true;
+        document.getElementById("btnNextPage").disabled = true;
         return;
     }
 
@@ -70,7 +112,8 @@ function renderReportTable() {
         const total = sumTotal(item.services);
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td><strong>${item.date}</strong></td>
+            <td><strong>${item.id}</strong></td>
+            <td>${item.date}</td>
             <td>${item.patient}</td>
             <td>${item.diagnosis}</td>
             <td>${item.treatment}</td>
@@ -100,7 +143,8 @@ function handleFilter() {
     const sort = document.getElementById("sortBy").value;
 
     filteredReports = examReports.filter(item => {
-        const matchKw = item.patient.toLowerCase().includes(kw) ||
+        const matchKw = item.id.toLowerCase().includes(kw) ||
+                        item.patient.toLowerCase().includes(kw) ||
                         item.diagnosis.toLowerCase().includes(kw) ||
                         item.treatment.toLowerCase().includes(kw);
         const matchFrom = from ? item.date >= from : true;
@@ -134,10 +178,10 @@ function openInvoiceModal(id) {
         <p><strong>Mã hóa đơn:</strong> ${item.id} &nbsp;|&nbsp; <strong>Ngày lập:</strong> ${item.date}</p>
         <p><strong>Bệnh nhân:</strong> ${item.patient}</p>
         <p><strong>Chẩn đoán:</strong> ${item.diagnosis}</p>
-        <div style="border-top: 1px dashed #cbd5e1; margin: 10px 0;"></div>
+        <div style="border-top: 1px dashed #cbd5e1; margin: 12px 0;"></div>
         ${itemsHtml}
-        <div style="border-top: 1px dashed #cbd5e1; margin: 10px 0;"></div>
-        <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; color: #1b75ff; margin-top: 8px;">
+        <div style="border-top: 1px dashed #cbd5e1; margin: 12px 0;"></div>
+        <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; color: #3165e8; margin-top: 8px;">
             <span>TỔNG THANH TOÁN:</span>
             <span>${formatVND(total)}</span>
         </div>
@@ -149,6 +193,27 @@ function openInvoiceModal(id) {
 function closeInvoiceModal() {
     document.getElementById("invoiceModal").classList.remove("active");
 }
+
+function exportReportCSV() {
+    let csvContent = "\uFEFFMã HĐ,Ngày khám,Bệnh nhân,Chẩn đoán,Pháp trị,Tổng tiền (VNĐ),Trạng thái\n";
+    filteredReports.forEach(item => {
+        const total = sumTotal(item.services);
+        const statusText = item.status === "paid" ? "Đã thu tiền" : "Chờ thanh toán";
+        csvContent += `"${item.id}","${item.date}","${item.patient}","${item.diagnosis}","${item.treatment}",${total},"${statusText}"\n`;
+    });
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "Bao_cao_hoa_don_LMDH.csv";
+    link.click();
+}
+
+// Đóng modal khi click ra ngoài vùng thẻ
+window.addEventListener("click", (e) => {
+    const modal = document.getElementById("invoiceModal");
+    if (e.target === modal) closeInvoiceModal();
+});
 
 document.getElementById("reportSearch").addEventListener("input", handleFilter);
 document.getElementById("dateFrom").addEventListener("change", handleFilter);
