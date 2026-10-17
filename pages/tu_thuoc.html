@@ -93,8 +93,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Hộp thoại Thêm thuốc mới (Đầy đủ các ô mục nhập như trong ảnh) -->
     <div class="modal-overlay" id="modal-them-thuoc">
         <div class="modal-box">
             <div class="modal-header">
@@ -103,7 +101,6 @@
             </div>
 
             <form id="form-them-thuoc" class="modal-body">
-                <!-- Hàng 1: Tên thuốc & Số đăng ký -->
                 <div class="form-row">
                     <div class="form-group col-2">
                         <label>Tên thuốc <span class="required">*</span></label>
@@ -114,8 +111,6 @@
                         <input type="text" id="so-dang-ky" placeholder="10258.KD.12.1">
                     </div>
                 </div>
-
-                <!-- Hàng 2: Hoạt chất, Dạng bào chế, Hàm lượng -->
                 <div class="form-row">
                     <div class="form-group col-1">
                         <label>Hoạt chất <span class="required">*</span></label>
@@ -130,8 +125,6 @@
                         <input type="text" id="ham-luong" placeholder="300mg" required>
                     </div>
                 </div>
-
-                <!-- Hàng 3: Đường dùng, Số lượng, Số lô -->
                 <div class="form-row">
                     <div class="form-group col-1">
                         <label>Đường dùng <span class="required">*</span></label>
@@ -146,8 +139,6 @@
                         <input type="text" id="so-lo" placeholder="LO001">
                     </div>
                 </div>
-
-                <!-- Hàng 4: Ghi chú & Ngày hết hạn -->
                 <div class="form-row">
                     <div class="form-group col-2">
                         <label>Ghi chú</label>
@@ -158,8 +149,6 @@
                         <input type="text" id="ngay-het-han" placeholder="Chọn ngày hết hạn" onfocus="(this.type='date')" onblur="(this.value === '' ? this.type='text' : this.type='date')">
                     </div>
                 </div>
-
-                <!-- Hàng 5: Giá nhập, Giá bán, Giá bán BHYT -->
                 <div class="form-row">
                     <div class="form-group col-1">
                         <label>Giá nhập</label>
@@ -174,8 +163,6 @@
                         <input type="number" id="gia-bhyt" placeholder="2000">
                     </div>
                 </div>
-
-                <!-- Hàng 6: Khung Thuế (%) và Giá sau thuế -->
                 <div class="tax-box">
                     <div class="form-row">
                         <div class="form-group col-1">
@@ -192,8 +179,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Hàng 7: Ngưỡng cảnh báo, Ngưỡng khẩn cấp, Số lượng đặt lại -->
                 <div class="form-row">
                     <div class="form-group col-1">
                         <label>Ngưỡng cảnh báo</label>
@@ -208,8 +193,6 @@
                         <input type="number" id="so-luong-dat-lai" value="50">
                     </div>
                 </div>
-
-                <!-- Hàng 8: Nhà sản xuất & Nhà phân phối -->
                 <div class="form-row">
                     <div class="form-group col-1">
                         <label>Nhà sản xuất</label>
@@ -220,8 +203,6 @@
                         <input type="text" id="nha-phan-phoi" placeholder="Nhà phân phối X">
                     </div>
                 </div>
-
-                <!-- Hàng 9: Khung Checkbox Chỉ tính tổng lượng -->
                 <div class="checkbox-box">
                     <input type="checkbox" id="chi-tinh-tong-luong">
                     <div class="checkbox-text">
@@ -229,8 +210,6 @@
                         <p>Nhập trực tiếp tổng số lượng thuốc thay vì tính theo công thức.</p>
                     </div>
                 </div>
-
-                <!-- Nút Hủy và Thêm thuốc ở cuối khung -->
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" id="btn-cancel-modal">Hủy</button>
                     <button type="submit" class="btn-primary">Thêm thuốc</button>
@@ -238,8 +217,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Chân trang -->
     <footer class="site-footer">
         <div class="Email">2026 © <strong>LMD-H</strong> | Email: LMD-H@gmail.com</div>
         <div class="footer-link">
@@ -247,8 +224,6 @@
             <a href="#">Liên Hệ</a>
         </div>
     </footer>
-
-    <!-- LƯU Ý: Thư mục của bạn trên VS Code đang tên là "javascipt" (thiếu chữ r) -->
     <script src="../javascipt/tu_thuoc.js"></script>
 </body>
 </html>
