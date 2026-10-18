@@ -1,9 +1,18 @@
-/*
-    File JavaScript chính của project.
+document.addEventListener("DOMContentLoaded", function () {
+    const menuDrops = document.querySelectorAll(".menu-drop");
 
-    Hiện tại chỉ là khuôn.
-    Các thành viên sẽ tự phát triển chức năng
-    bằng JavaScript ở các module của mình.
-*/
+    menuDrops.forEach(function (item) {
+        item.addEventListener("click", function () {
+            const parent = this.parentElement;
+            const icon = this.querySelector(".drop-icon");
 
-console.log("Health Management - Project initialized");
+            parent.classList.toggle("open");
+
+            if (parent.classList.contains("open")) {
+                icon.textContent = "-";
+            } else {
+                icon.textContent = "+";
+            }
+        });
+    });
+});
