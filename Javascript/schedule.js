@@ -1,4 +1,3 @@
-// Chức năng trang Lịch làm việc: khung giờ, trạng thái, ngày nghỉ, sao chép và QR.
 document.addEventListener("DOMContentLoaded", function () {
     const DAYS = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
     const STORAGE_KEY = "lmd_schedule_v1";
@@ -14,10 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const toast = document.getElementById("toast");
 
     let toastTimer;
-    let schedule = loadJSON(STORAGE_KEY, DAYS.map(function (day) {
-        return { day: day, enabled: false, times: [] };
-    }));
-    let holidays = loadJSON(HOLIDAY_KEY, []);
+    const defaultSchedule = DAYS.map(function (day, idx) {
+        return {
+            day: day,
+            enabled: idx < 6,
+            times: idx < 6 ? [{ start: "08:00", end: "11:30" }, { start: "13:30", end: "17:00" }] : []
+        };
+    });
+
+    let schedule = loadJSON(STORAGE_KEY, defaultSchedule);
+    let holidays = loadJSON(HOLIDAY_KEY, [
+        { id: "1", name: "Nghỉ lễ Quốc khánh", date: "2026-09-02", note: "Phòng khám nghỉ làm việc cả ngày" }
+    ]);
 
     document.getElementById("current-year").textContent = new Date().getFullYear();
 
@@ -49,6 +56,23 @@ document.addEventListener("DOMContentLoaded", function () {
         renderHolidays();
         if (showMessage) notify("Đã lưu thay đổi trên trình duyệt.");
     }
+
+    document.querySelectorAll("[data-close]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            const targetId = btn.getAttribute("data-close");
+            const dialog = document.getElementById(targetId);
+            if (dialog && typeof dialog.close === "function") {
+                dialog.close();
+            }
+        });
+    });
+
+    [timeModal, holidayModal, qrModal].forEach(function (dialog) {
+        if (!dialog) return;
+        dialog.addEventListener("click", function (e) {
+            if (e.target === dialog) dialog.close();
+        });
+    });
 
     function renderSchedule() {
         scheduleList.innerHTML = "";
@@ -90,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!item.enabled || item.times.length === 0) {
                 const noTime = document.createElement("span");
                 noTime.className = "no-time";
-                noTime.textContent = item.enabled ? "Chưa thiết lập khung giờ" : "Chưa có khung giờ (Mặc định cả ngày)";
+                noTime.textContent = item.enabled ? "Chưa thiết lập khung giờ" : "Nghỉ cả ngày";
                 timeList.appendChild(noTime);
             } else {
                 item.times.forEach(function (time, timeIndex) {
@@ -242,7 +266,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("add-holiday").addEventListener("click", function () {
         holidayForm.reset();
-        document.getElementById("holiday-date").min = "";
         holidayModal.showModal();
     });
 
@@ -311,8 +334,6 @@ document.addEventListener("DOMContentLoaded", function () {
         copyText(shareUrl.value);
     });
 
-    // Khi chạy bằng file://, QR/link là địa chỉ cục bộ của máy. Muốn chia sẻ cho người khác,
-    // hãy triển khai trang lên hosting hoặc máy chủ trong mạng nội bộ.
     renderSchedule();
     renderHolidays();
 });
