@@ -209,7 +209,6 @@ function exportReportCSV() {
     link.click();
 }
 
-// Đóng modal khi click ra ngoài vùng thẻ
 window.addEventListener("click", (e) => {
     const modal = document.getElementById("invoiceModal");
     if (e.target === modal) closeInvoiceModal();

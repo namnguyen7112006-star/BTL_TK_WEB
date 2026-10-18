@@ -1,6 +1,5 @@
 const STORAGE_KEY = "lmdh_doctor_profile";
 
-// Tải dữ liệu đã lưu khi mở trang
 document.addEventListener("DOMContentLoaded", () => {
     const savedData = localStorage.getItem(STORAGE_KEY);
     if (savedData) {
