@@ -1,0 +1,362 @@
+.my-page-main {
+  margin-left: 0 !important;
+  max-width: 1280px;
+  margin: 0 auto !important;
+}
+
+.report-panel {
+  padding: 24px;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filter-search {
+  flex: 2;
+  min-width: 240px;
+}
+
+.filter-search input,
+.filter-dates input,
+.filter-sort select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  color: #172033;
+  transition: border-color 0.2s;
+}
+
+.filter-search input:focus,
+.filter-dates input:focus,
+.filter-sort select:focus {
+  border-color: #3165e8;
+}
+
+.filter-dates {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.filter-dates input {
+  width: auto;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  padding: 13px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.status-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-tag.paid {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-tag.pending {
+  background-color: #fef9c3;
+  color: #a16207;
+}
+
+.btn-action-view {
+  background-color: #eef5ff;
+  color: #3165e8;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.btn-action-view:hover {
+  background-color: #3165e8;
+  color: #fff;
+}
+
+.pagination-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  margin-top: 8px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.pagination-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-page {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.btn-page:hover:not(:disabled) {
+  border-color: #3165e8;
+  color: #3165e8;
+  background: #eef5ff;
+}
+
+.btn-page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal-layer.active {
+  display: flex;
+}
+
+.modal-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.modal-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-title-bar h3 {
+  font-size: 18px;
+  color: #172033;
+}
+
+.modal-close-btn {
+  font-size: 24px;
+  color: #94a3b8;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  color: #ef4444;
+}
+
+.modal-bottom-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-gray {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #475569;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-gray:hover {
+  background: #e2e8f0;
+}
+
+.settings-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.settings-subnav {
+  background: #ffffff;
+  border: 1px solid #e3e7ee;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.subnav-heading {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin: 16px 0 8px 12px;
+  letter-spacing: 0.5px;
+}
+
+.subnav-link {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #475569;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-bottom: 4px;
+}
+
+.subnav-link:hover {
+  background: #f1f5f9;
+  color: #3165e8;
+}
+
+.subnav-link.active {
+  background: #edf4ff;
+  color: #3165e8;
+  font-weight: 600;
+}
+
+.settings-form-card {
+  background: #ffffff;
+  border: 1px solid #e3e7ee;
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.form-group-item {
+  margin-bottom: 20px;
+}
+
+.form-group-item label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.form-group-item input[type="text"],
+.form-group-item select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #172033;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group-item input[readonly] {
+  background-color: #f1f5f9;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.form-group-item input[type="text"]:focus:not([readonly]),
+.form-group-item select:focus {
+  border-color: #3165e8;
+}
+
+.name-flex-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 12px;
+}
+
+.avatar-upload-box {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px dashed #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f8fafc;
+  transition: border-color 0.2s;
+}
+
+.avatar-upload-box:hover {
+  border-color: #3165e8;
+}
+
+.avatar-upload-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .settings-layout {
+    grid-template-columns: 1fr;
+  }
+  .name-flex-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
