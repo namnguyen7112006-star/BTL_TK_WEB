@@ -7,13 +7,15 @@
     <title>Lịch làm việc | LMD Health</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/schedule.css">
+    <link rel="stylesheet" href="../css/slidebar.css">
+    <script src="../javascript/sidebar.js" defer></script>
 </head>
 
-<body>
+<body data-page="schedule">
     <main class="main my-schedule-main">
         <section class="content">
              <nav aria-label="breadcrumb">
-        <a href="index.html">Trang chủ</a> / <span>Báo cáo & Thống kê</span>
+        <a href="../index.html">Trang ch&#7911;</a> / <span>L&#7883;ch l&#224;m vi&#7879;c</span>
             </nav>
              <div class="page-title">
                 <div>
@@ -59,14 +61,6 @@
                     <div id="holiday-list" class="holiday-list"></div>
                 </section>
             </div>
-
-            <footer class="page-footer">
-                <span><span id="current-year"></span> © <strong>LMD-H</strong> | Email: LMD-H@gmail.com</span>
-                <div>
-                    <a href="#">Về chúng tôi</a>
-                    <a href="#">Liên hệ</a>
-                </div>
-            </footer>
         </section>
     </main>
 
@@ -133,9 +127,15 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <footer class="site-footer">
-        <div class="Email">2026 © <strong>LMD-H</strong> | Email: LMD-H@gmail.com</div>
-        <div class="footer-link"><a href="#">Về chúng tôi</a><a href="#">Liên Hệ</a></div>
-    </footer>
+    <div class="Email">
+        <span><span id="current-year">2026</span> &copy; <strong>LMD-H</strong></span>
+        <span>Email: LMD-H@gmail.com</span>
+    </div>
+    <div class="footer-link">
+        <a href="#">V&#7873; ch&#250;ng t&#244;i</a>
+        <a href="#">Li&#234;n h&#7879;</a>
+    </div>
+</footer>
     
     <script src="../javascript/schedule.js"></script>
 </body>

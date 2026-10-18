@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "1", name: "Nghỉ lễ Quốc khánh", date: "2026-09-02", note: "Phòng khám nghỉ làm việc cả ngày" }
     ]);
 
-    document.getElementById("current-year").textContent = new Date().getFullYear();
+    const currentYear = document.getElementById("current-year");
+    if (currentYear) currentYear.textContent = new Date().getFullYear();
 
     const shareUrl = document.getElementById("share-url");
     shareUrl.value = window.location.href;

@@ -317,3 +317,25 @@ nav a {
     display: flex;
     gap: 20px;
 }
+
+/* Giữ footer trong khung nhìn khi bảng đang ở trạng thái rỗng. */
+body[data-page="hoasinh"] {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.prescription-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    margin-bottom: 24px;
+}
+
+.empty-state {
+    min-height: 140px;
+    padding: 20px 0;
+}
+
+.emty-icon {
+    width: min(190px, 38vw);
+}
