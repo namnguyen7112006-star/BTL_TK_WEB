@@ -326,10 +326,7 @@ body {
     color: red;
 }
 
-.form-input,
-.form-textarea,
-input[type="date"],
-select {
+.form-input, .form-textarea, input[type="date"], select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
