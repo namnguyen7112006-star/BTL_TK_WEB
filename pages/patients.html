@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LMD Health - Quản lý Bệnh nhân</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/patients.css">
+</head>
+
+<body>
+    <main class="main-content my-standalone-main">
+        <nav aria-label="breadcrumb">
+            <a href="index.html">Trang chủ</a> / <span>Báo cáo & Thống kê</span>
+        </nav>
+        <header class="page-heading">
+            <div>
+                <h1 id="pageTitle">Danh sách Bệnh Nhân</h1>
+                <div class="breadcrumb">
+                    <span>Hệ thống quản lý y tế</span> / <span id="breadcrumbText">Bệnh Nhân</span>
+                </div>
+            </div>
+            <button class="btn primary" id="openAdd" type="button">＋ Thêm Bệnh Nhân</button>
+        </header>
+
+        <section class="card" id="listView">
+            <div class="toolbar">
+                <strong id="countText">Hiển thị 0 / 0 hồ sơ</strong>
+                <div class="tools">
+                    <label class="search">⌕
+                        <input id="search" placeholder="Tìm tên, mã BN, số điện thoại" aria-label="Tìm bệnh nhân">
+                    </label>
+                    <select id="sort">
+                        <option value="new">Mới thêm trước</option>
+                        <option value="nameAsc">Tên A → Z</option>
+                        <option value="nameDesc">Tên Z → A</option>
+                        <option value="birthAsc">Năm sinh tăng dần</option>
+                        <option value="birthDesc">Năm sinh giảm dần</option>
+                    </select>
+                    <button class="btn filter-btn" id="filterToggle" type="button">☷ Bộ lọc</button>
+                </div>
+            </div>
+
+            <div class="filter-panel" id="filterPanel" hidden>
+                <label>Giới tính
+                    <select id="genderFilter">
+                        <option value="all">Tất cả</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </label>
+                <label>Năm sinh từ
+                    <input id="yearFrom" type="number" placeholder="1900">
+                </label>
+                <label>đến
+                    <input id="yearTo" type="number" placeholder="2026">
+                </label>
+                <button class="btn primary small" id="applyFilter" type="button">Áp dụng</button>
+                <button class="btn light small" id="clearFilter" type="button">Xóa lọc</button>
+            </div>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mã hồ sơ <button class="sort-arrow" data-sort="id" type="button">↕</button></th>
+                            <th>Bệnh nhân <button class="sort-arrow" data-sort="name" type="button">↕</button></th>
+                            <th>Liên hệ <button class="sort-arrow" data-sort="phone" type="button">↕</button></th>
+                            <th>Tiền căn <button class="sort-arrow" data-sort="history" type="button">↕</button></th>
+                            <th style="text-align: center;">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patientRows"></tbody>
+                </table>
+            </div>
+
+            <div class="empty-state" id="empty" hidden>
+                <div class="empty-icon">ⓘ</div>
+                <p id="emptyText">Chưa có hồ sơ bệnh nhân. Nhấn “Thêm Bệnh Nhân” để tạo hồ sơ đầu tiên.</p>
+            </div>
+
+            <div class="table-footer">
+                <div class="page-size">Hiện
+                    <select id="pageSize">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select> một trang
+                </div>
+                <div class="pagination">
+                    <span id="range">Dòng đang xem: 0-0</span>
+                    <button id="prev" class="page-btn" type="button" disabled>‹</button>
+                    <span id="pageNo">0 / 0</span>
+                    <button id="next" class="page-btn" type="button" disabled>›</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card add-page" id="addView" hidden>
+            <div class="add-header">
+                <div>
+                    <h2>Thêm Bệnh Nhân Mới</h2>
+                    <p>Nhập thông tin chi tiết để tạo hồ sơ y tế mới</p>
+                </div>
+                <button class="close" id="closeAddPage" type="button">×</button>
+            </div>
+            <form id="pageForm" class="patient-form">
+                <div class="error"></div>
+                <div class="form-grid">
+                    <label>Họ và tên <em>*</em>
+                        <input type="text" name="name" required placeholder="Nhập họ tên bệnh nhân">
+                    </label>
+                    <label>Giới tính
+                        <select name="gender">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </label>
+                    <label>Năm sinh <em>*</em>
+                        <select name="birthYear" class="birth-year"></select>
+                    </label>
+                    <label class="full">Địa chỉ <em>*</em>
+                        <input type="text" name="address" required placeholder="Số nhà, đường, quận/huyện...">
+                    </label>
+                    <label>Số điện thoại
+                        <input type="text" name="phone" placeholder="Số điện thoại liên hệ">
+                    </label>
+                    <label>Số CCCD/CMND
+                        <input type="text" name="identity" placeholder="Số căn cước công dân">
+                    </label>
+                    <label class="full">Tiền căn bệnh án
+                        <textarea name="history" placeholder="Lịch sử bệnh lý..." style="width: 100%; height: 80px; padding: 10px; border: 1px solid #dfe1e6; border-radius: 8px; resize: vertical;"></textarea>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn primary">Lưu hồ sơ</button>
+                    <button type="button" class="btn light" id="cancelPage">Hủy</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div class="backdrop" id="modal" hidden>
+        <div class="modal card">
+            <div class="add-header">
+                <div>
+                    <h2>Thêm Bệnh Nhân Mới</h2>
+                    <p>Tạo hồ sơ bệnh nhân mới vào hệ thống</p>
+                </div>
+                <button class="close" id="closeModal" type="button">×</button>
+            </div>
+            <form id="modalForm" class="patient-form">
+                <div class="error"></div>
+                <div class="form-grid">
+                    <label>Họ và tên <em>*</em>
+                        <input type="text" name="name" required placeholder="Nhập họ tên bệnh nhân">
+                    </label>
+                    <label>Giới tính
+                        <select name="gender">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </label>
+                    <label>Năm sinh <em>*</em>
+                        <select name="birthYear" class="birth-year"></select>
+                    </label>
+                    <label class="full">Địa chỉ <em>*</em>
+                        <input type="text" name="address" required placeholder="Số nhà, đường, quận/huyện...">
+                    </label>
+                    <label>Số điện thoại
+                        <input type="text" name="phone" placeholder="Số điện thoại liên hệ">
+                    </label>
+                    <label>Số CCCD/CMND
+                        <input type="text" name="identity" placeholder="Số căn cước công dân">
+                    </label>
+                    <label class="full">Tiền căn bệnh án
+                        <textarea name="history" placeholder="Lịch sử bệnh lý..." style="width: 100%; height: 80px; padding: 10px; border: 1px solid #dfe1e6; border-radius: 8px; resize: vertical;"></textarea>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn light" id="cancelModal">Hủy</button>
+                    <button type="submit" class="btn primary">Thêm hồ sơ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <footer class="site-footer">
+        <div class="Email">2026 © <strong>LMD-H</strong> | Email: LMD-H@gmail.com</div>
+        <div class="footer-link"><a href="#">Về chúng tôi</a><a href="#">Liên Hệ</a></div>
+    </footer>
+
+    <script src="../javascript/patients.js"></script>
+</body>
+
+</html>
