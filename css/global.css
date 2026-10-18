@@ -577,9 +577,8 @@ body {
 }
 
 footer {
-    background:#64748b;
+    background: #fff;
     padding: 10px;
-    color:#fff7e9;
 }
 .site-footer{
     flex-direction: column;

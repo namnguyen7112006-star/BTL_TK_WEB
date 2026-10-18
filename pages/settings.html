@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cài đặt tài khoản</title>
+    <title>Cài đặt tài khoản & Danh mục kỹ thuật - LMD-H</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/custom.css">
 </head>
@@ -13,74 +13,461 @@
 
     <main class="main my-page-main">
         <section class="content">
-            <nav aria-label="breadcrumb">
-        <a href="index.html">Trang chủ</a> / <span>Cài đặt</span>
-            </nav>
-            <div class="page-title">
-                <div>
-                    <h1>Cài đặt tài khoản</h1>
-                    <p>Quản lý thông tin bác sĩ phụ trách và cấu hình phòng khám</p>
+            <!-- Thanh chuyển đổi giữa các trang nhiệm vụ của bạn -->
+            <div class="task-nav-tabs">
+                <a href="report.html" class="task-tab">📊 Báo cáo & Hóa đơn</a>
+                <button type="button" class="task-tab active" id="tabBtnSettings" onclick="switchMainTab('settings')">⚙ Cài đặt tài khoản</button>
+                <button type="button" class="task-tab" id="tabBtnCatalog" onclick="switchMainTab('catalog')">🧪 Danh mục kỹ thuật (Cận lâm sàng)</button>
+            </div>
+
+            <!-- ==================== VIEW 1: CÀI ĐẶT TÀI KHOẢN ==================== -->
+            <div id="settingsView">
+                <div class="page-title">
+                    <div>
+                        <h1>Cài đặt</h1>
+                        <p>Trang chủ / Cài đặt tài khoản</p>
+                    </div>
+                </div>
+
+                <div class="settings-layout">
+                    <!-- Menu điều hướng bên trái -->
+                    <aside class="settings-subnav">
+                        <a href="#basic_section" class="subnav-link active" data-target="basic_section">Thông tin cơ bản</a>
+
+                        <div class="subnav-heading">Cấu hình phòng khám</div>
+                        <a href="#clinic_section" class="subnav-link" data-target="clinic_section">Thông tin phòng khám</a>
+                        <a href="#payment_section" class="subnav-link" data-target="payment_section">Thanh toán</a>
+                        <a href="#print_section" class="subnav-link" data-target="print_section">Tính năng & In ấn</a>
+                        <a href="#zalo_section" class="subnav-link" data-target="zalo_section">Thông báo Zalo</a>
+
+                        <div class="subnav-heading">Tích hợp</div>
+                        <a href="#ai_section" class="subnav-link" data-target="ai_section">Trợ lý AI</a>
+                        <a href="#einvoice_section" class="subnav-link" data-target="einvoice_section">Hóa đơn điện tử</a>
+                        <a href="#national_rx_section" class="subnav-link" data-target="national_rx_section">Đơn thuốc Quốc gia</a>
+                    </aside>
+
+                    <!-- Cột chứa tất cả các thẻ cài đặt bên phải -->
+                    <div class="settings-cards-stack">
+
+                        <!-- 1. THÔNG TIN TÀI KHOẢN -->
+                        <div class="settings-form-card" id="basic_section">
+                            <div class="card-section-header">
+                                <h3>Thông tin tài khoản</h3>
+                            </div>
+                            <form onsubmit="saveSection(event, 'Thông tin tài khoản')">
+                                <div class="setting-row">
+                                    <label class="setting-label">Ảnh đại diện</label>
+                                    <div class="setting-field avatar-row-flex">
+                                        <span class="field-hint">Chọn ảnh vuông (1:1). Chỉ chấp nhận: png, jpg, jpeg.</span>
+                                        <div class="avatar-circle-wrap">
+                                            <div class="avatar-upload-box" onclick="document.getElementById('avatarFile').click()">
+                                                <img id="previewImg" src="https://ui-avatars.com/api/?name=Minh+HV&background=e2e8f0&color=64748b&size=128" alt="Avatar">
+                                            </div>
+                                            <button type="button" class="avatar-remove-btn" onclick="removeAvatar()" title="Xóa ảnh">×</button>
+                                            <input type="file" id="avatarFile" accept=".png,.jpg,.jpeg" style="display:none;" onchange="handleImageUpload(event, 'previewImg', 'avatar')">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Họ và tên <span class="req">*</span></label>
+                                    <div class="setting-field">
+                                        <div class="name-top-row">
+                                            <select id="titlePrefix">
+                                                <option value="BS.">BS.</option>
+                                                <option value="ThS.BS">ThS.BS</option>
+                                                <option value="TS.BS">TS.BS</option>
+                                                <option value="Lương y">Lương y</option>
+                                            </select>
+                                            <input type="text" id="firstName" value="MINH" placeholder="Tên" required>
+                                        </div>
+                                        <input type="text" id="lastName" value="HV" placeholder="Họ và tên đệm" required style="margin-top: 10px;">
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Mã Giấy phép / CCHN</label>
+                                    <div class="setting-field">
+                                        <input type="text" id="licenseNum" placeholder="Mã Chứng chỉ hành nghề / Giấy phép hành nghề" value="CCHN-YHCT-08824">
+                                        <small class="field-hint">Số GPHN/CCHN dùng để hiển thị trong trang chủ, đơn thuốc.</small>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Mã Phòng Khám</label>
+                                    <div class="setting-field">
+                                        <input type="text" id="clinicCode" value="25602384" readonly>
+                                        <small class="field-hint">Mã phòng khám do hệ thống LMD-H tự động tạo.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions-right">
+                                    <button type="submit" class="btn-save-blue">✓ Lưu thay đổi</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 2. THÔNG TIN PHÒNG KHÁM -->
+                        <div class="settings-form-card" id="clinic_section">
+                            <div class="card-section-header">
+                                <h3>Thông tin phòng khám</h3>
+                            </div>
+                            <form onsubmit="saveSection(event, 'Thông tin phòng khám')">
+                                <div class="setting-row">
+                                    <label class="setting-label">Mã số thuế</label>
+                                    <div class="setting-field">
+                                        <div class="tax-lookup-group">
+                                            <input type="text" id="taxCode" placeholder="Nhập mã số thuế (VD: 0301261735)">
+                                            <button type="button" class="btn-save-blue" onclick="autoFillTaxInfo()">🔍 Tìm và điền</button>
+                                        </div>
+                                        <small class="field-hint">Nhập mã số thuế để tra cứu và tự động điền thông tin cơ sở.</small>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Tên phòng khám</label>
+                                    <div class="setting-field">
+                                        <input type="text" id="clinicName" placeholder="Tên phòng khám của bạn">
+                                        <small class="field-hint">Dùng để hiển thị trong trang chủ, đơn thuốc.</small>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Loại phòng khám</label>
+                                    <div class="setting-field">
+                                        <select id="clinicType">
+                                            <option value="Đa khoa">Đa khoa</option>
+                                            <option value="Y học cổ truyền (Đông y)">Y học cổ truyền (Đông y)</option>
+                                            <option value="Chuyên khoa Nội">Chuyên khoa Nội</option>
+                                            <option value="Chuyên khoa Nhi">Chuyên khoa Nhi</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Địa chỉ phòng khám</label>
+                                    <div class="setting-field">
+                                        <input type="text" id="clinicAddress" placeholder="Địa chỉ phòng khám của bạn">
+                                        <small class="field-hint">Dùng để hiển thị trong trang chủ, đơn thuốc.</small>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Thông tin liên hệ</label>
+                                    <div class="setting-field">
+                                        <input type="text" id="clinicContact" placeholder="Thông tin liên hệ, sđt, email, website">
+                                        <small class="field-hint">Dùng để hiển thị trong trang chủ, đơn thuốc.</small>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Giới thiệu phòng khám</label>
+                                    <div class="setting-field">
+                                        <textarea id="clinicBio" rows="3" maxlength="300" placeholder="Nhập mô tả ngắn về phòng khám, dịch vụ chuyên khoa, kinh nghiệm..."></textarea>
+                                        <small class="field-hint">Tối đa 300 ký tự. Hiển thị trong trang Bio Link.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions-right">
+                                    <button type="submit" class="btn-save-blue">✓ Lưu thay đổi</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 3. THANH TOÁN -->
+                        <div class="settings-form-card" id="payment_section">
+                            <div class="card-section-header">
+                                <h3>Thanh toán</h3>
+                            </div>
+                            <form onsubmit="saveSection(event, 'Thanh toán')">
+                                <div class="setting-row">
+                                    <label class="setting-label">Hiện thông tin chuyển khoản</label>
+                                    <div class="setting-field toggle-inline-wrap">
+                                        <label class="ios-switch">
+                                            <input type="checkbox" id="showBankTransfer">
+                                            <span class="ios-slider"></span>
+                                        </label>
+                                        <span class="field-hint">Hiển thị thông tin chuyển khoản trong hóa đơn.</span>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions-right">
+                                    <button type="submit" class="btn-save-blue">✓ Lưu thay đổi</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 4. TÍNH NĂNG & CÀI ĐẶT (IN ẤN) -->
+                        <div class="settings-form-card" id="print_section">
+                            <div class="card-section-header">
+                                <h3>Tính năng & Cài đặt</h3>
+                            </div>
+                            <form onsubmit="saveSection(event, 'Tính năng & In ấn')">
+                                <div class="setting-row">
+                                    <label class="setting-label">Hiện Logo</label>
+                                    <div class="setting-field toggle-inline-wrap">
+                                        <label class="ios-switch">
+                                            <input type="checkbox" id="showClinicLogo" checked>
+                                            <span class="ios-slider"></span>
+                                        </label>
+                                        <span class="field-hint">Hiển thị logo trên các trang cho thuốc, chỉ định.</span>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Ảnh Logo</label>
+                                    <div class="setting-field avatar-row-flex">
+                                        <span class="field-hint">Chỉ chấp nhận: png, jpg, jpeg.</span>
+                                        <div class="logo-preview-wrap">
+                                            <div class="logo-upload-box" onclick="document.getElementById('logoFile').click()">
+                                                <img id="previewLogoImg" src="https://ui-avatars.com/api/?name=LMD+H&background=ffffff&color=e11d48&bold=true&size=128" alt="Logo">
+                                            </div>
+                                            <button type="button" class="avatar-remove-btn" onclick="removeLogo()" title="Xóa logo">×</button>
+                                            <input type="file" id="logoFile" accept=".png,.jpg,.jpeg" style="display:none;" onchange="handleImageUpload(event, 'previewLogoImg', 'logo')">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Chữ ký điện tử</label>
+                                    <div class="setting-field toggle-inline-wrap">
+                                        <label class="ios-switch">
+                                            <input type="checkbox" id="useESignature">
+                                            <span class="ios-slider"></span>
+                                        </label>
+                                        <span class="field-hint">Bật chữ ký bằng hình chữ ký có sẵn (không phải chữ ký số).</span>
+                                    </div>
+                                </div>
+
+                                <div class="setting-row">
+                                    <label class="setting-label">Khổ giấy in</label>
+                                    <div class="setting-field">
+                                        <select id="paperSize">
+                                            <option value="A5">A5</option>
+                                            <option value="A4">A4</option>
+                                            <option value="K80">In nhiệt K80</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions-right">
+                                    <button type="submit" class="btn-save-blue">✓ Lưu thay đổi</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 5. THÔNG BÁO ZALO -->
+                        <div class="settings-form-card" id="zalo_section">
+                            <div class="card-section-header">
+                                <h3>Thông báo Zalo</h3>
+                            </div>
+                            <div class="setting-row">
+                                <label class="setting-label">Nhận thông báo qua Zalo</label>
+                                <div class="setting-field">
+                                    <p style="font-size: 14px; color: #334155; margin-bottom: 10px; line-height: 1.5;">
+                                        Chưa đăng ký. Để đăng ký, mở Zalo và tìm <strong>Bot nhắc lịch hẹn khám LMD-H</strong>, sau đó gửi lệnh:
+                                    </p>
+                                    <div class="zalo-cmd-box" onclick="copyZaloCommand()" title="Bấm để sao chép lệnh">
+                                        <code id="zaloCmdText">/dang-ky 25602384</code>
+                                        <span class="copy-hint">Sao chép</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. TRỢ LÝ AI CÁ NHÂN -->
+                        <div class="settings-form-card" id="ai_section">
+                            <div class="card-section-header ai-header-flex">
+                                <div>
+                                    <h3>Trợ lý AI cá nhân</h3>
+                                    <p>Dùng API key riêng cho chatbot và Trò chuyện với bệnh án.</p>
+                                </div>
+                                <span class="badge-system-model" id="aiStatusBadge">Đang dùng model hệ thống</span>
+                            </div>
+                            <form onsubmit="saveSection(event, 'Trợ lý AI cá nhân')">
+                                <div class="ai-info-banner">
+                                    <div class="ai-banner-icon">⚙</div>
+                                    <div>
+                                        <strong>Một provider, một model cho mỗi lượt chat</strong>
+                                        <p>Bạn có thể lưu nhiều model. Bác sĩ chỉ chọn một model tại cửa sổ chat để tránh gửi trùng yêu cầu.</p>
+                                    </div>
+                                </div>
+
+                                <div class="ai-grid-two">
+                                    <div>
+                                        <label class="setting-label" style="margin-bottom: 8px; display:block;">Nhà cung cấp <span class="req">*</span></label>
+                                        <select id="aiProvider">
+                                            <option value="ChatGPT / OpenAI">ChatGPT / OpenAI</option>
+                                            <option value="Google Gemini">Google Gemini</option>
+                                            <option value="Claude / Anthropic">Claude / Anthropic</option>
+                                        </select>
+                                        <small class="field-hint">OpenAI và Anthropic luôn dùng endpoint chính thức.</small>
+                                    </div>
+                                    <div>
+                                        <label class="setting-label" style="margin-bottom: 8px; display:block;">API key</label>
+                                        <input type="password" id="aiApiKey" placeholder="Nhập API key cá nhân">
+                                        <label class="checkbox-reset-ai">
+                                            <input type="checkbox" id="resetAiModel">
+                                            <span>Xóa API key cá nhân và quay lại model hệ thống</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions-right">
+                                    <button type="submit" class="btn-save-blue">✓ Lưu cấu hình AI</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 7. HÓA ĐƠN ĐIỆN TỬ & ĐƠN THUỐC QUỐC GIA -->
+                        <div class="settings-form-card" id="einvoice_section">
+                            <div class="card-section-header">
+                                <h3>Hóa đơn điện tử & Đơn thuốc Quốc gia</h3>
+                            </div>
+                            <form id="national_rx_section" onsubmit="saveSection(event, 'Tích hợp hệ thống')">
+                                <div class="setting-row">
+                                    <label class="setting-label">Hóa đơn điện tử</label>
+                                    <div class="setting-field">
+                                        <select id="einvoiceProvider">
+                                            <option value="">-- Chọn nhà cung cấp (Viettel S-Invoice, VNPT, MISA...) --</option>
+                                            <option value="Viettel S-Invoice">Viettel S-Invoice</option>
+                                            <option value="VNPT Invoice">VNPT Invoice</option>
+                                            <option value="MISA meInvoice">MISA meInvoice</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="setting-row">
+                                    <label class="setting-label">Mã liên thông Đơn thuốc QG</label>
+                                    <div class="setting-field">
+                                        <input type="text" id="nationalRxCode" placeholder="Nhập mã liên thông cơ sở khám chữa bệnh (donthuocquocgia.vn)">
+                                    </div>
+                                </div>
+                                <div class="card-actions-right">
+                                    <button type="submit" class="btn-save-blue">✓ Lưu tích hợp</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-            <div class="settings-layout">
-                <aside class="settings-subnav">
-                    <div class="subnav-link active">● Thông tin cơ bản</div>
-                    <div class="subnav-heading">Cấu hình phòng khám</div>
-                    <div class="subnav-link" onclick="alert('Đang cập nhật tab này!')">Thông tin phòng khám</div>
-                    <div class="subnav-link" onclick="alert('Đang cập nhật tab này!')">Thanh toán</div>
-                    <div class="subnav-link" onclick="alert('Đang cập nhật tab này!')">Tính năng & In ấn</div>
-                    <div class="subnav-heading">Tích hợp</div>
-                    <div class="subnav-link" onclick="alert('Đang cập nhật tab này!')">Hóa đơn điện tử</div>
-                </aside>
+            <!-- ==================== VIEW 2: TỦ CẬN LÂM SÀNG (DANH MỤC KỸ THUẬT) ==================== -->
+            <div id="catalogView" style="display: none;">
+                <div class="page-title">
+                    <div>
+                        <h1>Tủ cận lâm sàng</h1>
+                        <p>Trang chủ / Tủ cận lâm sàng</p>
+                    </div>
+                    <button type="button" class="btn-save-blue" onclick="openLabModal()">＋ Thêm chỉ định</button>
+                </div>
 
-                <div class="settings-form-card">
-                    <h3 style="margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0;">Thông tin tài khoản</h3>
-                    <form id="profileForm" onsubmit="saveProfile(event)">
-                        <div class="form-group-item">
-                            <label>Ảnh đại diện (Bấm vào ảnh để thay đổi)</label>
-                            <div class="avatar-upload-box" onclick="document.getElementById('avatarFile').click()">
-                                <img id="previewImg" src="https://ui-avatars.com/api/?name=Hoang+Minh&background=3165e8&color=fff&size=128" alt="Avatar">
-                            </div>
-                            <input type="file" id="avatarFile" accept="image/*" style="display:none;" onchange="handleAvatarChange(event)">
-                        </div>
+                <div class="panel report-panel">
+                    <div style="margin-bottom: 14px;">
+                        <h3 style="font-size: 15px; margin-bottom: 4px;">Danh mục cận lâm sàng, kỹ thuật, khoảng tham chiếu và đơn vị</h3>
+                        <span id="labCountText" style="font-size: 13px; color: #64748b;">Hiển thị 0 / 0 mục</span>
+                    </div>
 
-                        <div class="form-group-item">
-                            <label>Họ và tên *</label>
-                            <div class="name-flex-grid">
-                                <select id="titlePrefix">
-                                    <option value="BS.">BS.</option>
-                                    <option value="Lương y">Lương y</option>
-                                    <option value="ThS.BS">ThS.BS</option>
-                                </select>
-                                <input type="text" id="lastName" placeholder="Họ và tên đệm" value="Hoàng Văn" required>
-                                <input type="text" id="firstName" placeholder="Tên" value="Minh" required>
-                            </div>
+                    <div class="filter-bar">
+                        <div class="filter-search">
+                            <input type="text" id="labSearch" placeholder="🔍 Tìm tên, mã, nhóm, đơn vị">
                         </div>
+                        <div class="filter-sort">
+                            <select id="labGroupFilter">
+                                <option value="all">Tất cả nhóm</option>
+                                <option value="Châm cứu & Trị liệu">Châm cứu & Trị liệu</option>
+                                <option value="Xét nghiệm máu">Xét nghiệm máu</option>
+                                <option value="Chẩn đoán hình ảnh">Chẩn đoán hình ảnh</option>
+                            </select>
+                        </div>
+                        <div class="filter-sort">
+                            <select id="labSort">
+                                <option value="asc">Sắp xếp: Tên A → Z</option>
+                                <option value="desc">Sắp xếp: Tên Z → A</option>
+                            </select>
+                        </div>
+                    </div>
 
-                        <div class="form-group-item">
-                            <label>Mã Giấy phép / CCHN *</label>
-                            <input type="text" id="licenseNum" value="CCHN-YHCT-08824" placeholder="Nhập mã chứng chỉ hành nghề YHCT" required>
-                        </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nhóm ↕</th>
+                                    <th>Tên / Mã ↕</th>
+                                    <th>Khoảng bình thường</th>
+                                    <th>Đơn vị</th>
+                                    <th style="text-align: center;">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="labTableBody"></tbody>
+                        </table>
+                    </div>
 
-                        <div class="form-group-item">
-                            <label>Mã Phòng Khám</label>
-                            <input type="text" value="LMDH-25602384" readonly>
-                        </div>
+                    <div id="labEmptyState" class="lab-empty-box" style="display: none;">
+                        <div class="lab-empty-icon">ⓘ</div>
+                        <p>Không có dữ liệu phù hợp.</p>
+                    </div>
 
-                        <div style="display: flex; justify-content: flex-end; margin-top: 24px;">
-                            <button type="submit" class="primary-button">Lưu thay đổi</button>
+                    <div class="pagination-wrap">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span>Hiện</span>
+                            <select id="labPageSize" style="padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span>một trang</span>
                         </div>
-                    </form>
+                        <div id="labPaginationInfo">Dòng đang xem: 0-0</div>
+                    </div>
                 </div>
             </div>
+
         </section>
+
+        <footer class="site-footer">
+            <div class="Email">2026 © <strong>LMD-H</strong> | Email: LMD-H@gmail.com</div>
+            <div class="footer-link"><a href="#">Về chúng tôi</a><a href="#">Liên Hệ</a></div>
+        </footer>
     </main>
 
-    <footer class="site-footer">
-        <div class="Email">2026 © <strong>LMD-H</strong> | Email: LMD-H@gmail.com</div>
-        <div class="footer-link"><a href="#">Về chúng tôi</a><a href="#">Liên Hệ</a></div>
-    </footer>
+    <!-- Modal Thêm Chỉ Định Cận Lâm Sàng -->
+    <div class="modal-layer" id="labModal">
+        <div class="modal-card">
+            <div class="modal-title-bar">
+                <h3>Thêm chỉ định / Kỹ thuật mới</h3>
+                <span class="modal-close-btn" onclick="closeLabModal()">&times;</span>
+            </div>
+            <form id="labForm" onsubmit="addLabItem(event)" style="margin-top: 16px;">
+                <div class="form-group-item">
+                    <label>Nhóm kỹ thuật *</label>
+                    <select id="newLabGroup" required>
+                        <option value="Châm cứu & Trị liệu">Châm cứu & Trị liệu</option>
+                        <option value="Xét nghiệm máu">Xét nghiệm máu</option>
+                        <option value="Chẩn đoán hình ảnh">Chẩn đoán hình ảnh</option>
+                    </select>
+                </div>
+                <div class="form-group-item">
+                    <label>Tên chỉ định / Kỹ thuật *</label>
+                    <input type="text" id="newLabName" placeholder="VD: Điện châm thông kinh lạc / Định lượng Glucose" required>
+                </div>
+                <div class="form-group-item">
+                    <label>Khoảng bình thường (Tham chiếu)</label>
+                    <input type="text" id="newLabRange" placeholder="VD: 3.9 - 6.4 hoặc Đạt yêu cầu">
+                </div>
+                <div class="form-group-item">
+                    <label>Đơn vị</label>
+                    <input type="text" id="newLabUnit" placeholder="VD: Lần, mmol/L, Phim">
+                </div>
+                <div class="modal-bottom-actions">
+                    <button type="button" class="btn-gray" onclick="closeLabModal()">Hủy</button>
+                    <button type="submit" class="btn-save-blue">Lưu chỉ định</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="settings-toast" id="settingsToast"></div>
 
     <script src="../javascript/settings.js"></script>
 </body>
