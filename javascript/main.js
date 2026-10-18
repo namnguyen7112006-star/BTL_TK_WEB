@@ -1,18 +1,22 @@
+// JavaScript dùng chung cho các trang
 document.addEventListener("DOMContentLoaded", function () {
-    const menuDrops = document.querySelectorAll(".menu-drop");
+    const toggle = document.getElementById("patient-menu-toggle");
+    const submenu = document.getElementById("patient-submenu");
 
-    menuDrops.forEach(function (item) {
-        item.addEventListener("click", function () {
-            const parent = this.parentElement;
-            const icon = this.querySelector(".drop-icon");
+    if (toggle && submenu) {
+        toggle.addEventListener("click", function () {
+            const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+            toggle.setAttribute("aria-expanded", String(!isExpanded));
+            submenu.hidden = isExpanded;
+            const arrow = toggle.querySelector(".menu-arrow");
+            if (arrow) arrow.textContent = isExpanded ? "+" : "−";
+        });
+    }
 
-            parent.classList.toggle("open");
-
-            if (parent.classList.contains("open")) {
-                icon.textContent = "-";
-            } else {
-                icon.textContent = "+";
-            }
+    document.querySelectorAll("[data-close]").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const dialog = document.getElementById(button.dataset.close);
+            if (dialog) dialog.close();
         });
     });
 });

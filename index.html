@@ -6,9 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Management - Tổng quan</title>
     <link rel="stylesheet" href="css/trangchulichhen.css">
+     <link rel="stylesheet" href="css/slidebar.css">
 </head>
 
 <body>
+    <!-- === BẮT ĐẦU SIDEBAR === -->
+<div class="sidebar">
+    <!-- Khu vực Logo: Tự động vừa khít, bạn chỉ cần thay đường dẫn ảnh -->
+    <div class="sidebar-logo">
+        <img src="assets/images/logo.png" alt="Logo Phòng Khám">
+    </div>
+    <!-- Danh sách Menu -->
+    <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+        <li><a href="lich_hen.html" class="nav-link">Lịch hẹn</a></li>
+        <li><a href="tu_thuoc.html" class="nav-link">Tủ thuốc</a></li>
+        <li><a href="don_thuoc.html" class="nav-link">Đơn thuốc</a></li>
+        <li><a href="can_lam_sang.html" class="nav-link">Cận lâm sàng</a></li>
+        <li><a href="dieu_tri.html" class="nav-link">Điều trị</a></li>
+        <li><a href="lich_lam_viec.html" class="nav-link">Lịch làm việc</a></li>
+        
+        <!-- Mục Bệnh nhân có Menu con xổ xuống -->
+        <li class="nav-item-dropdown">
+            <div class="nav-link dropdown-toggle">
+                <span>Bệnh nhân</span>
+                <span class="arrow">▼</span>
+            </div>
+            <!-- Danh sách con ẩn đi, chỉ hiện khi bấm -->
+            <ul class="sub-menu">
+                <li><a href="danh_sach_benh_nhan.html">Danh sách bệnh nhân</a></li>
+                <li><a href="them_benh_nhan.html">Thêm bệnh nhân mới</a></li>
+            </ul>
+        </li>
+
+        <li><a href="bao_cao.html" class="nav-link">Báo cáo thống kê</a></li>
+        <li><a href="cai_dat.html" class="nav-link">Cài đặt</a></li>
+    </ul>
+</div>
+<!-- === KẾT THÚC SIDEBAR === -->
+
+<!-- KHU VỰC NỘI DUNG TRANG WEB (Bắt buộc phải bọc trong thẻ này) -->
+<div class="main-content">
+    
+
     <!-- ================= MAIN ================= -->
     <main class="main">
         <header class="header">
@@ -80,5 +120,6 @@
     </footer>
     
     <script src="../javascript/trangchulichhen.js"></script>
+    </div>
 </body>
 </html>
