@@ -4,93 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Management - Tổng quan</title>
-    <link rel="stylesheet" href="css/trangchulichhen.css">
-     <link rel="stylesheet" href="css/slidebar.css">
+    <title>LMD Health - Tổng quan</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/slidebar.css">
     <script src="javascript/sidebar.js" defer></script>
 </head>
 
 <body>
     <div class="main-content">
-    
+        <main class="home-main">
+            <nav class="breadcrumb" aria-label="Đường dẫn">
+                <span>LMD Health</span>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">Tổng quan</span>
+            </nav>
 
-    <!-- ================= MAIN ================= -->
-    <main class="main">
-        <header class="header">
-            <div class="header-title">
-                <span>Trang chủ</span>
-            </div>
-        </header>
-
-        <section class="content">
-            <div class="page-title">
+            <header class="home-heading">
                 <div>
                     <h1>Tổng quan</h1>
-                    <p>Thông tin tổng quan của hệ thống</p>
+                    <p>Theo dõi và quản lý hoạt động phòng khám của bạn.</p>
                 </div>
-                <button class="primary-button" onclick="window.location.href='pages/lichhen.html'">
-                    + Tạo lịch hẹn
-                </button>
-            </div>
+                <a class="primary-button" href="pages/lichhen.html">+ Tạo lịch khám</a>
+            </header>
 
-            <div class="cards">
-                <div class="card">
-                    <div class="card-icon blue">+</div>
-                    <div>
-                        <p>Bệnh nhân</p>
-                        <h2>0</h2>
-                    </div>
+            <section class="welcome-banner" aria-labelledby="welcome-title">
+                <div class="welcome-copy">
+                    <span class="welcome-label">LMD HEALTH · QUẢN LÝ PHÒNG KHÁM</span>
+                    <h2 id="welcome-title">Chăm sóc tốt hơn, bắt đầu từ quản lý rõ ràng.</h2>
+                    <p>Truy cập nhanh hồ sơ bệnh nhân, lịch khám và các công việc hằng ngày.</p>
+                    <a href="pages/lichhen.html" class="welcome-link">Xem lịch khám <span aria-hidden="true">→</span></a>
                 </div>
-                <div class="card">
-                    <div class="card-icon green">+</div>
-                    <div>
-                        <p>Bác sĩ</p>
-                        <h2>0</h2>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-icon orange">+</div>
-                    <div>
-                        <p>Lịch khám</p>
-                        <h2>0</h2>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-icon purple">+</div>
-                    <div>
-                        <p>Phòng khám</p>
-                        <h2>0</h2>
-                    </div>
-                </div>
-            </div>
+                <div class="welcome-symbol" aria-hidden="true">+</div>
+            </section>
 
-            <div class="dashboard-grid">
-                <div class="panel">
-                    <div class="panel-header">
+            <section class="shortcuts" aria-labelledby="shortcuts-title">
+                <div class="section-heading">
+                    <div>
+                        <h2 id="shortcuts-title">Truy cập nhanh</h2>
+                        <p>Các chức năng thường dùng trong phòng khám.</p>
+                    </div>
+                </div>
+
+                <div class="shortcut-grid">
+                    <a class="shortcut-card" href="pages/patients.html">
+                        <span class="shortcut-icon icon-blue" aria-hidden="true">BN</span>
+                        <span class="shortcut-copy">
+                            <strong>Bệnh nhân</strong>
+                            <span>Quản lý hồ sơ bệnh nhân</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a class="shortcut-card" href="pages/lichhen.html">
+                        <span class="shortcut-icon icon-green" aria-hidden="true">LH</span>
+                        <span class="shortcut-copy">
+                            <strong>Lịch hẹn</strong>
+                            <span>Sắp xếp lịch khám</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a class="shortcut-card" href="pages/don_thuoc.html">
+                        <span class="shortcut-icon icon-orange" aria-hidden="true">ĐT</span>
+                        <span class="shortcut-copy">
+                            <strong>Đơn thuốc</strong>
+                            <span>Xem và quản lý đơn thuốc</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a class="shortcut-card" href="pages/can_lam_sang.html">
+                        <span class="shortcut-icon icon-purple" aria-hidden="true">CLS</span>
+                        <span class="shortcut-copy">
+                            <strong>Cận lâm sàng</strong>
+                            <span>Theo dõi kết quả xét nghiệm</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="home-bottom" aria-label="Thông tin trong ngày">
+                <div class="home-panel today-panel">
+                    <div class="panel-heading">
                         <div>
-                            <h3>Lịch hẹn hôm nay</h3>
+                            <h2>Lịch khám hôm nay</h2>
+                            <p>Cập nhật lịch và chuẩn bị cho buổi khám.</p>
+                        </div>
+                        <a href="pages/lichhen.html">Mở lịch hẹn <span aria-hidden="true">→</span></a>
+                    </div>
+                    <div class="empty-schedule">
+                        <span class="empty-icon" aria-hidden="true">◷</span>
+                        <div>
+                            <strong>Chưa có lịch khám hôm nay</strong>
+                            <p>Tạo lịch hẹn mới để bắt đầu theo dõi.</p>
                         </div>
                     </div>
-                    <div class="placeholder box-padding">
-                        <h3>Chưa có lịch hẹn hôm nay</h3>
-                    </div>
                 </div>
+
+                <div class="home-panel tips-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Bắt đầu sử dụng</h2>
+                            <p>Ba bước cho quy trình khám.</p>
+                        </div>
+                    </div>
+                    <ol class="getting-started">
+                        <li><a href="pages/patients.html">Thêm hồ sơ bệnh nhân</a></li>
+                        <li><a href="pages/lichhen.html">Tạo lịch khám phù hợp</a></li>
+                        <li><a href="pages/don_thuoc.html">Theo dõi đơn thuốc</a></li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="Email">
+                <span><span id="current-year">2026</span> &copy; <strong>LMD-H</strong></span>
+                <span>Email: LMD-H@gmail.com</span>
             </div>
-        </section>
-    </main>
-    
-    <footer class="site-footer">
-    <div class="Email">
-        <span><span id="current-year">2026</span> &copy; <strong>LMD-H</strong></span>
-        <span>Email: LMD-H@gmail.com</span>
-    </div>
-    <div class="footer-link">
-        <a href="#">V&#7873; ch&#250;ng t&#244;i</a>
-        <a href="#">Li&#234;n h&#7879;</a>
-    </div>
-</footer>
-    
-    <script src="javascript/trangchulichhen.js"></script>
+            <div class="footer-link">
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Liên hệ</a>
+            </div>
+        </footer>
     </div>
 </body>
+
 </html>
