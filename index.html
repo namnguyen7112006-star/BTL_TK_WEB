@@ -4,372 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Health Management</title>
-
-    <link rel="stylesheet" href="css/global.css">
+    <title>LMD Health - Tổng quan</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/slidebar.css">
+    <script src="javascript/sidebar.js" defer></script>
 </head>
 
 <body>
+    <div class="main-content">
+        <main class="home-main">
+            <nav class="breadcrumb" aria-label="Đường dẫn">
+                <span>LMD Health</span>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">Tổng quan</span>
+            </nav>
 
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="sidebar">
-
-        <!-- Logo -->
-        <div class="logo">
-            <div class="logo-icon">H</div>
-            <span>HEALTH</span>
-        </div>
-
-
-        <!-- Menu -->
-        <nav class="menu">
-
-            <a href="#" class="menu-item active">
-                <span class="menu-icon">⌂</span>
-                <span>Tổng quan</span>
-            </a>
-
-            <a href="#" class="menu-item">
-                <span class="menu-icon">●</span>
-                <span>Bệnh nhân</span>
-            </a>
-
-            <a href="#" class="menu-item">
-                <span class="menu-icon">●</span>
-                <span>Bác sĩ</span>
-            </a>
-
-            <a href="#" class="menu-item">
-                <span class="menu-icon">●</span>
-                <span>Lịch khám</span>
-            </a>
-
-            <a href="#" class="menu-item">
-                <span class="menu-icon">●</span>
-                <span>Hồ sơ</span>
-            </a>
-
-            <a href="#" class="menu-item">
-                <span class="menu-icon">●</span>
-                <span>Thông báo</span>
-            </a>
-
-            <a href="#" class="menu-item">
-                <span class="menu-icon">⚙</span>
-                <span>Cài đặt</span>
-            </a>
-
-        </nav>
-
-    </aside>
-
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="main">
-
-
-        <!-- ================= HEADER ================= -->
-
-        <header class="header">
-
-            <div class="header-title">
-
-                <h2>Dashboard</h2>
-
-                <p>Hệ thống quản lý y tế</p>
-
-            </div>
-
-
-            <div class="header-right">
-
-                <button class="notification-button">
-                    🔔
-                    <span class="notification-dot"></span>
-                </button>
-
-                <div class="user-icon">
-                    U
-                </div>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- ================= CONTENT ================= -->
-
-        <section class="content">
-
-
-            <!-- Page title -->
-
-            <div class="page-title">
-
+            <header class="home-heading">
                 <div>
-
                     <h1>Tổng quan</h1>
+                    <p>Theo dõi và quản lý hoạt động phòng khám của bạn.</p>
+                </div>
+                <a class="primary-button" href="pages/lichhen.html">+ Tạo lịch khám</a>
+            </header>
 
-                    <p>
-                        Thông tin tổng quan của hệ thống
-                    </p>
+            <section class="welcome-banner" aria-labelledby="welcome-title">
+                <div class="welcome-copy">
+                    <span class="welcome-label">LMD HEALTH · QUẢN LÝ PHÒNG KHÁM</span>
+                    <h2 id="welcome-title">Chăm sóc tốt hơn, bắt đầu từ quản lý rõ ràng.</h2>
+                    <p>Truy cập nhanh hồ sơ bệnh nhân, lịch khám và các công việc hằng ngày.</p>
+                    <a href="pages/lichhen.html" class="welcome-link">Xem lịch khám <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="welcome-symbol" aria-hidden="true">+</div>
+            </section>
 
+            <section class="shortcuts" aria-labelledby="shortcuts-title">
+                <div class="section-heading">
+                    <div>
+                        <h2 id="shortcuts-title">Truy cập nhanh</h2>
+                        <p>Các chức năng thường dùng trong phòng khám.</p>
+                    </div>
                 </div>
 
+                <div class="shortcut-grid">
+                    <a class="shortcut-card" href="pages/patients.html">
+                        <span class="shortcut-icon icon-blue" aria-hidden="true">BN</span>
+                        <span class="shortcut-copy">
+                            <strong>Bệnh nhân</strong>
+                            <span>Quản lý hồ sơ bệnh nhân</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a class="shortcut-card" href="pages/lichhen.html">
+                        <span class="shortcut-icon icon-green" aria-hidden="true">LH</span>
+                        <span class="shortcut-copy">
+                            <strong>Lịch hẹn</strong>
+                            <span>Sắp xếp lịch khám</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a class="shortcut-card" href="pages/don_thuoc.html">
+                        <span class="shortcut-icon icon-orange" aria-hidden="true">ĐT</span>
+                        <span class="shortcut-copy">
+                            <strong>Đơn thuốc</strong>
+                            <span>Xem và quản lý đơn thuốc</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a class="shortcut-card" href="pages/can_lam_sang.html">
+                        <span class="shortcut-icon icon-purple" aria-hidden="true">CLS</span>
+                        <span class="shortcut-copy">
+                            <strong>Cận lâm sàng</strong>
+                            <span>Theo dõi kết quả xét nghiệm</span>
+                        </span>
+                        <span class="shortcut-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </section>
 
-                <!-- Nút mẫu -->
+            <section class="home-bottom" aria-label="Thông tin trong ngày">
+                <div class="home-panel today-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Lịch khám hôm nay</h2>
+                            <p>Cập nhật lịch và chuẩn bị cho buổi khám.</p>
+                        </div>
+                        <a href="pages/lichhen.html">Mở lịch hẹn <span aria-hidden="true">→</span></a>
+                    </div>
+                    <div class="empty-schedule">
+                        <span class="empty-icon" aria-hidden="true">◷</span>
+                        <div>
+                            <strong>Chưa có lịch khám hôm nay</strong>
+                            <p>Tạo lịch hẹn mới để bắt đầu theo dõi.</p>
+                        </div>
+                    </div>
+                </div>
 
-                <button class="primary-button">
-                    + Thêm mới
-                </button>
+                <div class="home-panel tips-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Bắt đầu sử dụng</h2>
+                            <p>Ba bước cho quy trình khám.</p>
+                        </div>
+                    </div>
+                    <ol class="getting-started">
+                        <li><a href="pages/patients.html">Thêm hồ sơ bệnh nhân</a></li>
+                        <li><a href="pages/lichhen.html">Tạo lịch khám phù hợp</a></li>
+                        <li><a href="pages/don_thuoc.html">Theo dõi đơn thuốc</a></li>
+                    </ol>
+                </div>
+            </section>
+        </main>
 
+        <footer class="site-footer">
+            <div class="Email">
+                <span><span id="current-year">2026</span> &copy; <strong>LMD-H</strong></span>
+                <span>Email: LMD-H@gmail.com</span>
             </div>
-
-
-
-            <!-- ================= CARDS ================= -->
-
-            <div class="cards">
-
-
-                <div class="card">
-
-                    <div class="card-icon blue">
-                        +
-                    </div>
-
-                    <div>
-
-                        <p>Bệnh nhân</p>
-
-                        <h2>---</h2>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="card">
-
-                    <div class="card-icon green">
-                        +
-                    </div>
-
-                    <div>
-
-                        <p>Bác sĩ</p>
-
-                        <h2>---</h2>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="card">
-
-                    <div class="card-icon orange">
-                        +
-                    </div>
-
-                    <div>
-
-                        <p>Lịch khám</p>
-
-                        <h2>---</h2>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="card">
-
-                    <div class="card-icon purple">
-                        +
-                    </div>
-
-                    <div>
-
-                        <p>Phòng khám</p>
-
-                        <h2>---</h2>
-
-                    </div>
-
-                </div>
-
-
+            <div class="footer-link">
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Liên hệ</a>
             </div>
-
-
-
-            <!-- ================= BOTTOM AREA ================= -->
-
-            <div class="dashboard-grid">
-
-
-                <!-- Khu vực nội dung mẫu -->
-
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <div>
-
-                            <h3>Nội dung mẫu</h3>
-
-                            <p>
-                                Khu vực dành cho chức năng của nhóm
-                            </p>
-
-                        </div>
-
-
-                        <button class="link-button">
-                            Xem thêm →
-                        </button>
-
-                    </div>
-
-
-                    <div class="placeholder">
-
-                        <div class="placeholder-icon">
-                            +
-                        </div>
-
-                        <h3>
-                            Khu vực nội dung
-                        </h3>
-
-                        <p>
-                            Thành viên nhóm sẽ phát triển
-                            chức năng tại khu vực này.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Thông báo mẫu -->
-
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <div>
-
-                            <h3>Thông báo</h3>
-
-                            <p>
-                                Nội dung mẫu
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="notice">
-
-                        <div class="notice-icon">
-                            !
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Thông báo mẫu
-                            </strong>
-
-                            <p>
-                                Đây chỉ là dữ liệu thay thế.
-                            </p>
-
-                            <small>
-                                Thời gian
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="notice">
-
-                        <div class="notice-icon">
-                            !
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Nội dung mẫu
-                            </strong>
-
-                            <p>
-                                Thành viên có thể thay thế.
-                            </p>
-
-                            <small>
-                                Thời gian
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="notice">
-
-                        <div class="notice-icon">
-                            !
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Nội dung mẫu
-                            </strong>
-
-                            <p>
-                                Chưa có dữ liệu thực tế.
-                            </p>
-
-                            <small>
-                                Thời gian
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-    </main>
-
-
-    <!-- JavaScript -->
-
-    <script src="javascript/main.js"></script>
-
+        </footer>
+    </div>
 </body>
 
 </html>

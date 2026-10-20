@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tủ thuốc</title>
+    <link rel="stylesheet" href="../css/tu_thuoc.css">
+    <link rel="stylesheet" href="../css/global.css">
+    
+    <link rel="stylesheet" href="../css/slidebar.css">
+    <script src="../javascript/sidebar.js" defer></script>
+</head>
+<body>
+    
+    <div class="main-content">
+        <header class="header-tuthuoc">
+        <div>
+            <h1>Tủ thuốc</h1>
+            <nav aria-label="breadcrumb">
+                <a href="../index.html">Trang chủ</a> / <span>Tủ thuốc</span>
+            </nav>
+        </div>
+        <div class="header-buttons">
+            <input type="file" id="file-txt" accept=".txt" style="display: none;">
+            <button type="button" class="btn-secondary" id="btn-import">Nhập file</button>
+            <button type="button" class="btn-secondary" id="btn-export">Xuất thuốc</button>
+            <button type="button" class="btn-primary" id="btn-open-modal">+ Thêm thuốc</button>
+        </div>
+    </header>
+    <main class="prescription-container">
+        <section class="toolbar">
+            <div class="tool-title">
+                <h2>Danh sách thuốc, tồn kho và thao tác nhập xuất</h2>
+                <p>Hiển thị <span id="current-count">0</span> / <span id="total-count">0</span> thuốc</p>
+            </div>
+            <div class="toolbar-action"> 
+                <div class="searchs-input">
+                    <div class="input-group">
+                        <input type="text" id="search-input" class="search-input" placeholder="Tìm mã, tên thuốc, hoạt chất">
+                    </div>
+                </div>
+                <select id="filter-stock" class="arrange">
+                    <option value="all">Tồn kho</option>
+                    <option value="in-stock">Còn hàng</option>
+                    <option value="low-stock">Sắp hết hàng</option>
+                    <option value="out-stock">Hết hàng</option>
+                </select>
+                <select id="sort-select" class="arrange">
+                    <option value="default">Sắp xếp</option>
+                    <option value="az">Tên từ A-Z</option>
+                    <option value="za">Tên từ Z-A</option>
+                    <option value="qty-asc">Số lượng tăng dần</option>
+                    <option value="qty-desc">Số lượng giảm dần</option>
+                </select>
+            </div>
+        </section>
+        <section class="table">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Số đăng ký</th>
+                        <th>Tên thuốc</th>
+                        <th>Hàm lượng</th>
+                        <th>Đường dùng</th>
+                        <th>Số lượng</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody id="medicine-tbody">
+                    <tr class="empty-row" id="empty-row">
+                        <td colspan="7">
+                            <div class="empty-state">
+                                <img src="../assets/images/emty-folder.png" alt="không có dữ liệu" class="emty-icon">
+                                <h3 class="empty-title">Không có thuốc phù hợp trong tủ thuốc.</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="Phântrang">
+            <div class="page-size">
+                <span>Hiện</span>
+                <select class="size" id="page-size">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                </select>
+                <span>một trang</span>
+            </div>
+            <div class="current-line-seeing">
+                <h3>Dòng đang xem: <span id="current-see">0-0</span></h3>
+            </div>
+        </section>
+    </main>
+    <div class="modal-overlay" id="modal-them-thuoc">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Thêm thuốc mới</h2>
+                <button type="button" class="close-btn" id="btn-close-modal">✕</button>
+            </div>
+
+            <form id="form-them-thuoc" class="modal-body">
+                <div class="form-row">
+                    <div class="form-group col-2">
+                        <label>Tên thuốc <span class="required">*</span></label>
+                        <input type="text" id="ten-thuoc" placeholder="Tenovir" required>
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Số đăng ký</label>
+                        <input type="text" id="so-dang-ky" placeholder="10258.KD.12.1">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-1">
+                        <label>Hoạt chất <span class="required">*</span></label>
+                        <input type="text" id="hoat-chat" placeholder="Tenofovir (TDF)" required>
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Dạng bào chế <span class="required">*</span></label>
+                        <input type="text" id="dang-bao-che" value="viên" required>
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Hàm lượng <span class="required">*</span></label>
+                        <input type="text" id="ham-luong" placeholder="300mg" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-1">
+                        <label>Đường dùng <span class="required">*</span></label>
+                        <input type="text" id="duong-dung" value="Uống" required>
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Số lượng <span class="required">*</span></label>
+                        <input type="number" id="so-luong" placeholder="300" required>
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Số lô</label>
+                        <input type="text" id="so-lo" placeholder="LO001">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-2">
+                        <label>Ghi chú</label>
+                        <input type="text" id="ghi-chu" placeholder="Dễ dị ứng">
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Ngày hết hạn</label>
+                        <input type="text" id="ngay-het-han" placeholder="Chọn ngày hết hạn" onfocus="(this.type='date')" onblur="(this.value === '' ? this.type='text' : this.type='date')">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-1">
+                        <label>Giá nhập</label>
+                        <input type="number" id="gia-nhap" placeholder="1500">
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Giá bán</label>
+                        <input type="number" id="gia-ban" placeholder="2000">
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Giá bán BHYT</label>
+                        <input type="number" id="gia-bhyt" placeholder="2000">
+                    </div>
+                </div>
+                <div class="tax-box">
+                    <div class="form-row">
+                        <div class="form-group col-1">
+                            <label>Thuế (%)</label>
+                            <input type="number" id="thue" value="0">
+                        </div>
+                        <div class="form-group col-1">
+                            <label>Giá bán sau thuế</label>
+                            <input type="text" id="gia-ban-sau-thue" value="0đ" class="readonly-input" readonly>
+                        </div>
+                        <div class="form-group col-1">
+                            <label>Giá BHYT sau thuế</label>
+                            <input type="text" id="gia-bhyt-sau-thue" value="0đ" class="readonly-input" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-1">
+                        <label>Ngưỡng cảnh báo</label>
+                        <input type="number" id="nguong-canh-bao" value="20">
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Ngưỡng khẩn cấp</label>
+                        <input type="number" id="nguong-khan-cap" value="10">
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Số lượng đặt lại</label>
+                        <input type="number" id="so-luong-dat-lai" value="50">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-1">
+                        <label>Nhà sản xuất</label>
+                        <input type="text" id="nha-san-xuat" placeholder="Công ty Dược A">
+                    </div>
+                    <div class="form-group col-1">
+                        <label>Nhà phân phối</label>
+                        <input type="text" id="nha-phan-phoi" placeholder="Nhà phân phối X">
+                    </div>
+                </div>
+                <div class="checkbox-box">
+                    <input type="checkbox" id="chi-tinh-tong-luong">
+                    <div class="checkbox-text">
+                        <label for="chi-tinh-tong-luong"><strong>Chỉ tính tổng lượng</strong></label>
+                        <p>Nhập trực tiếp tổng số lượng thuốc thay vì tính theo công thức.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="btn-cancel-modal">Hủy</button>
+                    <button type="submit" class="btn-primary">Thêm thuốc</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="site-footer">
+    <div class="Email">
+        <span><span id="current-year">2026</span> &copy; <strong>LMD-H</strong></span>
+        <span>Email: LMD-H@gmail.com</span>
+    </div>
+    <div class="footer-link">
+        <a href="#">V&#7873; ch&#250;ng t&#244;i</a>
+        <a href="#">Li&#234;n h&#7879;</a>
+    </div>
+</footer>
+    <script src="../javascript/tu_thuoc.js"></script>
+    </div>
+
+</body>
+</html>

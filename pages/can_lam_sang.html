@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinh hóa, huyết học, GPB</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/can_lam_sang.css">
+    <link rel="stylesheet" href="../css/slidebar.css">
+    <script src="../javascript/sidebar.js" defer></script>
+</head>
+<body data-page="hoasinh">
+    <header class="header-cls">
+        <div>
+            <h1>Sinh hóa, huyết học, GPB</h1>
+            <nav aria-label="breadcrumb">
+                <a href="../index.html">Trang chủ</a> / <span>Sinh hóa, huyết học, GPB</span>
+            </nav>
+        </div>
+        <div class="header-buttons">
+            <button type="button" class="btn-secondary" id="btn-export">Xuất file</button>
+            <button type="button" class="btn-primary" id="btn-open-modal">+ Thêm Bệnh Nhân</button>
+        </div>
+    </header>
+
+    <!-- 3 ô thống kê -->
+    <section class="quick-stats">
+        <div class="stat-box">
+            <span>Tổng số mẫu xét nghiệm:</span>
+            <strong id="stat-total">0</strong>
+        </div>
+        <div class="stat-box">
+            <span>Chờ lấy mẫu / phân tích:</span>
+            <strong id="stat-wait" class="status-wait">0</strong>
+        </div>
+        <div class="stat-box">
+            <span>Đã trả kết quả:</span>
+            <strong id="stat-done" class="status-done">0</strong>
+        </div>
+    </section>
+
+    <main class="prescription-container">
+        <section class="toolbar">
+            <div class="tool-title">
+                <h2>Danh sách chỉ định Sinh hóa, huyết học, GPB của bạn</h2>
+                <p>Hiển thị <span id="current-count">0</span> / <span id="total-count">0</span> chỉ định</p>
+            </div>
+            <div class="toolbar-action">
+                <div class="searchs-input">
+                    <input type="text" id="search-input" class="search-input" placeholder="Tìm bệnh nhân, chỉ định, bác sĩ">
+                    <input type="text" id="date-input" class="date-input" placeholder="Từ ngày - đến ngày" onfocus="(this.type='date')" onblur="(this.value === '' ? this.type='text' : this.type='date')">
+                </div>
+                <select id="sort-select" class="arrange">
+                    <option value="default">Sắp xếp</option>
+                    <option value="az">Tên bệnh nhân A-Z</option>
+                    <option value="za">Tên bệnh nhân Z-A</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="table">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Bệnh nhân</th>
+                        <th>Chỉ định xét nghiệm</th>
+                        <th>Mẫu bệnh phẩm</th>
+                        <th>Bác sĩ chỉ định</th>
+                        <th>Kết quả / Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="cls-tbody">
+                    <tbody id="cls-tbody">
+                    <tr class="empty-row">
+                        <td colspan="7">
+                            <div class="empty-state">
+                                <img src="../assets/images/emty-folder.png" alt="không có dữ liệu" class="emty-icon">
+                                <h3 class="empty-title">Không có chỉ định phù hợp.</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="Phântrang">
+            <div class="page-size">
+                <span>Hiện</span>
+                <select class="size"><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>
+                <span>một trang</span>
+            </div>
+            <div class="current-line-seeing">
+                <h3>Dòng đang xem: <span id="current-see">0-0</span></h3>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Thêm Bệnh Nhân -->
+    <div class="modal-overlay" id="modal-add">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Thêm chỉ định Xét nghiệm Hóa sinh</h2>
+                <button type="button" class="close-btn" id="btn-close-modal">✕</button>
+            </div>
+            <form id="form-add" class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tên bệnh nhân *</label>
+                        <input type="text" id="inp-patient" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày chỉ định *</label>
+                        <input type="date" id="inp-date" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Chỉ định xét nghiệm *</label>
+                        <input type="text" id="inp-service" placeholder="Tổng phân tích máu / Đường huyết" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mẫu bệnh phẩm *</label>
+                        <select id="inp-extra">
+                            <option value="Máu tĩnh mạch">Máu tĩnh mạch</option>
+                            <option value="Huyết thanh">Huyết thanh</option>
+                            <option value="Nước tiểu">Nước tiểu</option>
+                            <option value="Mẫu sinh thiết">Mẫu sinh thiết</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Bác sĩ chỉ định *</label>
+                        <input type="text" id="inp-doctor" placeholder="BS. Nguyễn Hữu Nam" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kết quả ban đầu</label>
+                        <input type="text" id="inp-result" placeholder="Chờ kết quả">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="btn-cancel-modal">Hủy</button>
+                    <button type="submit" class="btn-primary">Lưu chỉ định</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+    <div class="Email">
+        <span><span id="current-year">2026</span> &copy; <strong>LMD-H</strong></span>
+        <span>Email: LMD-H@gmail.com</span>
+    </div>
+    <div class="footer-link">
+        <a href="#">V&#7873; ch&#250;ng t&#244;i</a>
+        <a href="#">Li&#234;n h&#7879;</a>
+    </div>
+</footer>
+
+    <script src="../javascript/can_lam_sang.js"></script>
+</body>
+</html>

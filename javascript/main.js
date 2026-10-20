@@ -1,9 +1,22 @@
-/*
-    File JavaScript chính của project.
+// JavaScript dùng chung cho các trang
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("patient-menu-toggle");
+    const submenu = document.getElementById("patient-submenu");
 
-    Hiện tại chỉ là khuôn.
-    Các thành viên sẽ tự phát triển chức năng
-    bằng JavaScript ở các module của mình.
-*/
+    if (toggle && submenu) {
+        toggle.addEventListener("click", function () {
+            const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+            toggle.setAttribute("aria-expanded", String(!isExpanded));
+            submenu.hidden = isExpanded;
+            const arrow = toggle.querySelector(".menu-arrow");
+            if (arrow) arrow.textContent = isExpanded ? "+" : "−";
+        });
+    }
 
-console.log("Health Management - Project initialized");
+    document.querySelectorAll("[data-close]").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const dialog = document.getElementById(button.dataset.close);
+            if (dialog) dialog.close();
+        });
+    });
+});

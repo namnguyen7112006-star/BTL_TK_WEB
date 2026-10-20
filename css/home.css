@@ -1,0 +1,409 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    background: #f5f7fb;
+}
+
+.home-main {
+    flex: 1;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 30px 34px 36px;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 9px;
+    margin-bottom: 24px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.breadcrumb [aria-current="page"] {
+    color: #3165e8;
+    font-weight: 600;
+}
+
+.home-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.home-heading h1 {
+    margin: 0 0 7px;
+    font-size: 28px;
+}
+
+.home-heading p,
+.section-heading p,
+.panel-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 9px 15px;
+    border: 1px solid #3165e8;
+    border-radius: 8px;
+    color: #fff;
+    background: #3165e8;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.primary-button:hover {
+    border-color: #2456d4;
+    background: #2456d4;
+}
+
+.welcome-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 205px;
+    margin-bottom: 30px;
+    padding: 30px 36px;
+    overflow: hidden;
+    border-radius: 16px;
+    color: #fff;
+    background: linear-gradient(110deg, #172b4d, #244b83);
+}
+
+.welcome-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 660px;
+}
+
+.welcome-label {
+    color: #b9d2ff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.welcome-copy h2 {
+    max-width: 620px;
+    margin: 12px 0 8px;
+    font-size: 25px;
+    line-height: 1.3;
+}
+
+.welcome-copy p {
+    margin: 0 0 18px;
+    color: #d5e1f3;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.welcome-link {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.welcome-link:hover {
+    text-decoration: underline;
+}
+
+.welcome-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 122px;
+    height: 122px;
+    margin-right: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 30px;
+    color: #d9e7ff;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 76px;
+    font-weight: 300;
+    transform: rotate(-8deg);
+}
+
+.section-heading {
+    margin-bottom: 15px;
+}
+
+.section-heading h2,
+.panel-heading h2 {
+    margin: 0 0 5px;
+    font-size: 17px;
+}
+
+.shortcut-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.shortcut-card {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    min-height: 94px;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #e3e7ee;
+    border-radius: 12px;
+    color: inherit;
+    background: #fff;
+    text-decoration: none;
+    transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.shortcut-card:hover {
+    border-color: #b8cdf9;
+    box-shadow: 0 8px 20px rgba(23, 32, 51, 0.07);
+    transform: translateY(-2px);
+}
+
+.shortcut-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 11px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.icon-blue {
+    color: #3165e8;
+    background: #edf3ff;
+}
+
+.icon-green {
+    color: #13875d;
+    background: #e8f7f0;
+}
+
+.icon-orange {
+    color: #b46a10;
+    background: #fff3df;
+}
+
+.icon-purple {
+    color: #7750c7;
+    background: #f1ebff;
+}
+
+.shortcut-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    gap: 5px;
+}
+
+.shortcut-copy strong {
+    font-size: 14px;
+}
+
+.shortcut-copy span {
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.shortcut-arrow {
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.home-bottom {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 16px;
+}
+
+.home-panel {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #e3e7ee;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.panel-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.panel-heading a {
+    flex: 0 0 auto;
+    color: #3165e8;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.panel-heading a:hover,
+.getting-started a:hover {
+    text-decoration: underline;
+}
+
+.empty-schedule {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+    padding: 17px;
+    border-radius: 9px;
+    background: #f7f9fc;
+}
+
+.empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: 10px;
+    color: #3165e8;
+    background: #eaf1ff;
+    font-size: 23px;
+}
+
+.empty-schedule strong {
+    font-size: 13px;
+}
+
+.empty-schedule p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.getting-started {
+    display: grid;
+    gap: 12px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: steps;
+}
+
+.getting-started li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #64748b;
+    font-size: 13px;
+    counter-increment: steps;
+}
+
+.getting-started li::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+    border-radius: 50%;
+    color: #3165e8;
+    background: #edf3ff;
+    content: counter(steps);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.getting-started a {
+    color: #334155;
+    text-decoration: none;
+}
+
+.primary-button:focus-visible,
+.welcome-link:focus-visible,
+.shortcut-card:focus-visible,
+.panel-heading a:focus-visible,
+.getting-started a:focus-visible {
+    outline: 2px solid #3165e8;
+    outline-offset: 3px;
+}
+
+@media (max-width: 1000px) {
+    .shortcut-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .home-main {
+        padding: 22px 18px 28px;
+    }
+
+    .welcome-banner {
+        min-height: 0;
+        padding: 25px;
+    }
+
+    .welcome-symbol {
+        width: 88px;
+        height: 88px;
+        margin-right: 8px;
+        font-size: 56px;
+    }
+
+    .home-bottom {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .home-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .welcome-banner {
+        padding: 22px;
+    }
+
+    .welcome-symbol {
+        display: none;
+    }
+
+    .welcome-copy h2 {
+        font-size: 21px;
+    }
+
+    .shortcut-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-panel {
+        padding: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shortcut-card {
+        transition: none;
+    }
+}

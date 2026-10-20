@@ -1,0 +1,341 @@
+/* Kế thừa đúng chuẩn từ thuoc.css và tu_thuoc.css của bạn */
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #172033;
+    margin-bottom: 8px;
+}
+
+.header-cls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px 0 20px;
+    border: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #64748B;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-primary {
+    background-color: #3165E8;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #2456D4;
+}
+
+.btn-secondary {
+    background-color: #FFFFFF;
+    color: #172033;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* Thanh liên kết chuyển qua lại giữa 4 file HTML */
+.page-nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.page-nav a {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E7EE;
+    color: #64748B;
+    font-size: 14px;
+}
+
+.page-nav a.active-link {
+    background-color: #EDF4FF;
+    color: #3165E8;
+    border-color: #3165E8;
+    font-weight: bold;
+}
+
+/* 3 ô thống kê nhỏ gọn (Giúp trang đỡ trống trải mà vẫn rất cơ bản) */
+.quick-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.stat-box {
+    flex: 1;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E7EE;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-box span {
+    font-size: 14px;
+    color: #64748B;
+}
+
+.stat-box strong {
+    font-size: 20px;
+    color: #172033;
+}
+
+/* Khung chính ở giữa giống hệt trang Đơn thuốc và Tủ thuốc */
+.prescription-container {
+    background-color: #FFFFFF;
+    border: 1px solid #E3E7EE;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 80px;
+}
+
+.toolbar {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tool-title h2 {
+    font-size: 15px;
+    color: #172033;
+    margin: 0;
+}
+
+.tool-title p {
+    font-size: 13px;
+    color: #64748B;
+    margin-top: 6px;
+}
+
+.toolbar-action {
+    display: flex;
+    gap: 16px;
+}
+
+.searchs-input {
+    display: flex;
+    gap: 16px;
+}
+
+.search-input, .date-input {
+    width: 200px;
+    padding: 8px 12px;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+
+.arrange {
+    width: 170px;
+    padding: 8px;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+    color: #172033;
+    background-color: #FFFFFF;
+}
+
+.table {
+    border-top: 1px solid #E3E7EE;
+    border-bottom: 1px solid #E3E7EE;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    padding: 12px 16px;
+    color: #172033;
+    background-color: #F5F7FB;
+    border-bottom: 2px solid #E3E7EE;
+    border-right: 1px solid #E3E7EE;
+    text-align: left;
+}
+
+.data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #E3E7EE;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 0;
+    min-height: 180px;
+}
+
+.emty-icon {
+    width: 250px;
+}
+
+.Phântrang {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.size {
+    padding: 6px 10px;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+}
+
+.current-line-seeing h3 {
+    font-size: 13px;
+}
+
+.status-wait {
+    color: #F59E0B;
+    font-weight: bold;
+}
+
+.status-done {
+    color: #16A05D;
+    font-weight: bold;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    background-color: #FFFFFF;
+    width: 550px;
+    border-radius: 12px;
+    border: 1px solid #E3E7EE;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #E3E7EE;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px 24px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.form-group input, .form-group select {
+    padding: 8px 12px;
+    border: 1px solid #E3E7EE;
+    border-radius: 8px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid #E3E7EE;
+    padding-top: 16px;
+}
+
+/* Chân trang */
+.site-footer {
+    background-color: #FFFFFF;
+    border-top: 1px solid #E3E7EE;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-link {
+    display: flex;
+    gap: 20px;
+}
+
+/* Giữ footer trong khung nhìn khi bảng đang ở trạng thái rỗng. */
+body[data-page="hoasinh"] {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.prescription-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    margin-bottom: 24px;
+}
+
+.empty-state {
+    min-height: 140px;
+    padding: 20px 0;
+}
+
+.emty-icon {
+    width: min(190px, 38vw);
+}

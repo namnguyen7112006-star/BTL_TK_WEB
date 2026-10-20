@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn thuốc</title>
+    <link rel="stylesheet" href="../css/thuoc.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/slidebar.css">
+    <script src="../javascript/sidebar.js" defer></script>
+</head>
+<body>
+    <header>
+    <h1>Đơn thuốc</h1>
+    <nav aria-label="breadcrumb">
+        <a href="index.html">Trang chủ</a> / <span>Đơn thuốc</span>
+    </nav>
+    <div class="header-buttons">
+            <input type="file" id="file-txt" accept=".txt" style="display: none;">
+            <button type="button" class="btn-primary" id="btn-open-modal">+ Thêm thuốc</button>
+        </div>
+    </header>
+    <main class ="prescription-container">
+        <section class="toolbar">
+        <div class = "tool-title">
+            <h2>Danh sách đơn thuốc đã tạo</h2>
+            <p>Hiển thị <span id ="current-count">0</span> / <span id="total-count">0</span> </p>
+        </div>
+        <div class="toolbar-action"> 
+            <div class="searchs-input">
+            <div class="input-group">
+                <input type="text" class="search-input" placeholder="Tìm bệnh nhân , chẩn đoán , thuốc">
+            </div>
+            <div class="input-group">
+                <input type="text" class="date-input" placeholder="Từ ngày - đến ngày" onfocus="(this.type='date')" onblur="(this.value === '' ? this.type='text' : this.type='date')">
+            </div>
+            </div>
+            <select class="arrange">
+                <option value="default">sắp xếp</option>
+                <option value="Default">Mới nhất</option>
+                <option value="Default">Cũ nhất</option>
+                <option value="Default">Tên từ A-Z</option>
+                <option value="Default">Tên từ Z-A</option>
+            </select>
+        </div>
+        </section>
+
+        <section class ="table">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Bệnh nhân</th>
+                        <th>Chẩn đoán</th>
+                        <th>Thuốc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty-row">
+                        <td colspan="4">
+                            <div class="empty-state">
+                                <img src="../assets/images/emty-folder.png" alt="không có dữ liệu" class="emty-icon" >
+                                <h3 class="empty-title">Không có đơn thuốc phù hợp.</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="Phântrang">
+            <div class="page-size">
+                <span>Hiện</span>
+                <select class="size">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                </select>
+                <span>một trang</span>
+            </div>
+        </section>
+        <section class="current-line-seeing">
+            <h3>Dòng đang xem <span id="current-see">0</span></h3>
+        </section>
+    </main>
+    <footer class="site-footer">
+    <div class="Email">
+        <span><span id="current-year">2026</span> &copy; <strong>LMD-H</strong></span>
+        <span>Email: LMD-H@gmail.com</span>
+    </div>
+    <div class="footer-link">
+        <a href="#">V&#7873; ch&#250;ng t&#244;i</a>
+        <a href="#">Li&#234;n h&#7879;</a>
+    </div>
+</footer>
+   <div id="modal-prescription" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Thêm đơn thuốc mới</h2>
+                <button type="button" class="btn-close-modal" id="btn-close-modal">&times;</button>
+            </div>
+
+            <form id="form-prescription" class="modal-body">
+                <div class="form-row grid-2-1">
+                    <div class="form-group">
+                        <label>Tên bệnh nhân <span class="req">*</span></label>
+                        <input type="text" id="pres-patient" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày kê đơn <span class="req">*</span></label>
+                        <input type="date" id="pres-date" required>
+                    </div>
+                </div>
+
+                <div class="form-row grid-1">
+                    <div class="form-group">
+                        <label>Chẩn đoán <span class="req">*</span></label>
+                        <input type="text" id="pres-diagnosis" placeholder="Viêm họng cấp" required>
+                    </div>
+                </div>
+
+                <div class="form-row grid-2-1">
+                    <div class="form-group">
+                        <label>Tên thuốc <span class="req">*</span></label>
+                        <input type="text" id="med-name" placeholder="Paracetamol 500mg" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hàm lượng / Đơn vị</label>
+                        <input type="text" id="med-unit" placeholder="Viên" value="Viên">
+                    </div>
+                </div>
+
+                <div class="form-row grid-3">
+                    <div class="form-group">
+                        <label>Số lượng <span class="req">*</span></label>
+                        <input type="number" id="med-qty" placeholder="10" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Liều uống <span class="req">*</span></label>
+                        <input type="text" id="med-dosage" placeholder="Sáng 1, Tối 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cách dùng</label>
+                        <input type="text" id="med-usage" placeholder="Uống sau ăn" value="Uống sau ăn">
+                    </div>
+                </div>
+
+                <div class="form-row grid-1">
+                    <div class="form-group">
+                        <label>Ghi chú / Lời dặn</label>
+                        <input type="text" id="pres-note" placeholder="Uống nhiều nước ấm">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="btn-cancel-modal">Hủy</button>
+                    <button type="submit" class="btn-save">Lưu đơn thuốc</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../javascript/thuoc.js"></script>
+</body>
+</html>
